@@ -1,2 +1,2 @@
-# diplomado-java-pucmm-mescyt
-Diplomado en Programación en Plataforma Java (PUCMM-MESCYT)
+##Diplomado en Programación Java (PUCMM-MESCYT)
+
