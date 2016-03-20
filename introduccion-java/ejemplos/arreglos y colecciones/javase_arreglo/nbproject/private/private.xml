@@ -4,5 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="demo"/>
         <group name="UAPA"/>
+        <group name="javase_fundamentos">
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/DiaDeLaSemana.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/EncontrarNumeroMasGrande.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/BucleforMejorado.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/ClaseArray.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/Arreglo.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/ArregloII.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/EncontrarNumeroMasPequeno.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_arreglo/src/com/eudriscabrera/java/arreglo/ArregloDosDimensiones.java</file>
+        </group>
     </open-files>
 </project-private>
