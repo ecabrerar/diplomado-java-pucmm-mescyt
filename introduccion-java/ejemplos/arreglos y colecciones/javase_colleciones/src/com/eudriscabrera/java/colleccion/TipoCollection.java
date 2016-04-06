@@ -8,8 +8,7 @@ public class TipoCollection {
         
         Collection<String> col = new ArrayList<>();
         col.add("Java");
-        col.add("C++");
-        
+        col.add("C++");  
         
         for(String lenguaje : col){
             System.out.println(lenguaje);

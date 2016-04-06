@@ -1,6 +1,7 @@
 package com.eudriscabrera.java.colleccion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 /**
@@ -17,6 +18,12 @@ public class ClaseArrayList {
         List<String> libros = new ArrayList<>();
         libros.add("El Principito");
         libros.add("El coronel no tiene quien le escriba");
+       
+        System.out.println("lo contiene :"+libros.indexOf("El Principito"));
+        
+        System.out.println("lo contiene :"+libros.contains("El Principito"));
+        
+        List<String> libros2 = Arrays.asList("Effective Java"," Java Head Firt");
 
         for (int i = 0; i < libros.size(); i++) {
             System.out.println(" Bucle For Tradicional " + libros.get(i));

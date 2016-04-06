@@ -7,10 +7,9 @@
         </group>
         <group name="UAPA"/>
         <group name="javase_fundamentos">
-            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_colleciones/src/com/eudriscabrera/java/colleccion/ClaseArrayList.java</file>
             <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_colleciones/src/com/eudriscabrera/java/colleccion/Product.java</file>
+            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_colleciones/src/com/eudriscabrera/java/colleccion/ClaseArrayList.java</file>
             <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_colleciones/src/com/eudriscabrera/java/colleccion/TipoCollection.java</file>
-            <file>file:/home/ecabrerar/Documents/PUCMM-MECSYT/diplomado-java-pucmm-mescyt/introduccion-java/ejemplos/arreglos%20y%20colecciones/javase_colleciones/src/com/eudriscabrera/java/colleccion/TipoMap.java</file>
         </group>
     </open-files>
 </project-private>
