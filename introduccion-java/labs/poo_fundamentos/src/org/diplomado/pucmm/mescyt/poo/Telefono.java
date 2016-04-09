@@ -5,11 +5,14 @@
  */
 package org.diplomado.pucmm.mescyt.poo;
 
+import org.diplomado.pucmm.mescyt.poo.utilidades.ICalcularPrecio;
+import org.diplomado.pucmm.mescyt.poo.utilidades.PrecioDB;
+
 /**
  *
  * @author ecabrerar
  */
-public class Telefono extends DispositivosMoviles{
+public class Telefono extends DispositivosMoviles implements ICalcularPrecio{
     private boolean enviarSms;
     private boolean recibirLlamadas;
     private boolean agendaContacto;
@@ -44,7 +47,12 @@ public class Telefono extends DispositivosMoviles{
 
     @Override
     public String toString() {
-        return String.format("Nombre:%s,Marca:%s,Modelo:%s", super.getNombre(),super.getMarca(),super.getModelo());
+        return String.format("Nombre:%s,Marca:%s,Modelo:%s, Precio:%.2f", super.getNombre(),super.getMarca(),super.getModelo(),getPrecio());
     }  
+
+    @Override
+    public double getPrecio() {
+       return PrecioDB.getPrecio(getMarca());
+    }
     
 }

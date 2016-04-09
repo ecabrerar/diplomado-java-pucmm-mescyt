@@ -5,11 +5,13 @@
  */
 package org.diplomado.pucmm.mescyt.poo;
 
+import org.diplomado.pucmm.mescyt.poo.utilidades.ICalcularPrecio;
+
 /**
  *
  * @author ecabrerar
  */
-public class Tablet extends DispositivosMoviles implements  Plataforma, Conectividad{
+public class Tablet extends DispositivosMoviles implements  Plataforma, Conectividad, ICalcularPrecio{
     private boolean multiTactil;
     private boolean conectividadWifi;
     private String sistemaOperativo;
@@ -48,6 +50,11 @@ public class Tablet extends DispositivosMoviles implements  Plataforma, Conectiv
     
      @Override
     public String toString() {
-        return String.format("Nombre:%s,Marca:%s,Modelo:%s. \nSistema Operativo: %s\n %s %s", super.getNombre(),super.getMarca(),super.getModelo(),getSistemaOperativo(), conectividadWifi?"WIFI":"No WIFI", multiTactil?"Multitactil":"No Multitactil");
+        return String.format("Nombre:%s,Marca:%s,Modelo:%s. \nSistema Operativo: %s Precio:%.2f \n %s %s", super.getNombre(),super.getMarca(),super.getModelo(),getSistemaOperativo(),getPrecio(), conectividadWifi?"WIFI":"No WIFI", multiTactil?"Multitactil":"No Multitactil");
     }  
+
+    @Override
+    public double getPrecio() {
+        return 15000;
+    }
 }
