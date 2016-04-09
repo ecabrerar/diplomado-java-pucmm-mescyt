@@ -2,6 +2,7 @@ package com.eudriscabrera.java.colleccion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 /**
@@ -18,6 +19,7 @@ public class ClaseArrayList {
         List<String> libros = new ArrayList<>();
         libros.add("El Principito");
         libros.add("El coronel no tiene quien le escriba");
+       
        
         System.out.println("lo contiene :"+libros.indexOf("El Principito"));
         
@@ -67,6 +69,19 @@ public class ClaseArrayList {
         }
 
         List list1 = new ArrayList();
+        
+        List<Integer> numeros = Arrays.asList(50,30,55,60);
+        
+        
+        Collections.sort(numeros);   
+         Collections.reverse(numeros);   
+         Collections.shuffle(numeros);
+        
+   
+        for (Integer numero : numeros) {
+            System.out.println(numero);
+        }
+      
 
     }
 }
