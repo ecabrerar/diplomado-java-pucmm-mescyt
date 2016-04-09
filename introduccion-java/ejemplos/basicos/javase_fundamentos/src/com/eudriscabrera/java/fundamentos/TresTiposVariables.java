@@ -25,5 +25,7 @@ public class TresTiposVariables {
         System.out.println("estatica = " + variableEstatica);
         //System.out.println("variable instancia = " + variableInstancia);
         System.out.println("local = " + variableLocal);
+        
+        
     }
 }
