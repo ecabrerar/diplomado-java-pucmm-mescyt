@@ -17,15 +17,31 @@ import org.diplomado.pucmm.mescyt.java.encapsulados.Persona;
 public class CriterioBusqueda {
     
     private void printPersonas(List<Persona> personas) {
+        System.out.println("\nprintPersonas: \n");
         
+         for (Persona persona : personas) {          
+                persona.printPersona();          
+        }
     }
     
     private void printPersonasMayoresQue(List<Persona> personas, int edad) {
-        
+        System.out.println("\nprintPersonasMayoresQue: \n");
+        for (Persona persona : personas) {
+            if(persona.getEdad()>edad){
+                persona.printPersona();
+            }
+        }
     }
     
     private void printPersonasEntreDosEdades(List<Persona> personas, int edadMenor, int edadMayor) {
         
+        System.out.println("\nprintPersonasEntreDosEdades : \n");
+        
+        for (Persona persona : personas) {
+            if(persona.getEdad()>edadMenor && persona.getEdad() < edadMayor){
+                persona.printPersona();
+            }
+        }
     }    
     
     
