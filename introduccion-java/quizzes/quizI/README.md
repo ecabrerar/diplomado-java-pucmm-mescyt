@@ -20,20 +20,22 @@
 >  Respuesta : Polimorfismo
 
 * Es una clase donde se indican los prototipos de los métodos que debería tener un objeto pero el cuerpo del mismo debe ser escrito en las clases que la implementan. 
-
-Respuesta : Interfaz o Interface.
+ > Respuesta : Interfaz o Interface.
 
 * Sobreescritura de Métodos es la creación de varios métodos con el mismo nombre pero con diferentes firmas y definiciones. 
-Respuesta : Falso
+ > Respuesta : Falso
 
 * Un arreglo es un objeto contenedor que almacena un número fijo de valores de un solo tipo. La longitud de un arreglo se establece cuando se crea el arreglo. Se desea crear un arreglo de String que contenga el nombre de 5 frutas. Escribir su solución en el espacio en blanco. 
-Respuesta : String[] frutas = {"Mango","Naranja","Melon","Manzana","Piña"};
+> Respuesta :  
+     ```java 
+     String[] frutas = {"Mango","Naranja","Melon","Manzana","Piña"};
+     ```
 
 * Son variables propias del objeto, son datos encapsulados dentro de el e indican un comportamiento del mismo, en varios lenguajes pueden ser accedida anteponiendo la palabra reservada this. 
-Respuesta : Propiedad o Atributo
+> Respuesta : Propiedad o Atributo
 
 * Cuando se crea una nueva clase en Java, se puede especificar el nivel de acceso que se quiere para las variables de instancia y los métodos definidos en la clase. Protected (Protegido) sólo pueden ser accedidos desde dentro de la clase. No son accesibles desde las subclases.
-Respuesta : Falso
+> Respuesta : Falso
 
 * Para acceder a una propiedad o método de una clase padre desde una subclase se utiliza la palabra reservada implements​. 
-Respuesta : Falso
+> Respuesta : Falso
