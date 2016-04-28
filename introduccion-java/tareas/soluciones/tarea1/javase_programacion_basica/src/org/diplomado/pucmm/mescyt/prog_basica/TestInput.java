@@ -20,6 +20,18 @@ public class TestInput {
    // Leer 3 valores enteros
    System.out.print("Digite 3 enteros: ");
    
+   int contador = 0;
+   
+    Double valor1 = sc.nextDouble();
+    
+    Double valor2 = sc.nextDouble();
+    
+    Double valor3 = sc.nextDouble();
+    
+   
+    double sumatoria = valor1+valor2+valor3;
+    
+        System.out.println("promedio : "+ sumatoria / 3);
     
  }
 }

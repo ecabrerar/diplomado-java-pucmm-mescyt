@@ -12,7 +12,15 @@ import java.util.Scanner;
  * @author ecabrerar
  */
 public class CalcularPromedioCalificaciones {
-     public static void main(String[] args) {
+  
+    public static void printMensaje(double scoreTotal, double scoreCount){
+          // mostrar el numero de puntuacion, la puntuacion total, y la puntuacion media
+        double averageScore = scoreTotal / scoreCount;
+                
+        System.out.println(String.format("Cantidad de muestra:   %.2f puntuacion total:%.2f puntuacion media: %.2f", scoreCount,scoreTotal,averageScore));
+    }
+    
+    public static void main(String[] args) {
        
         System.out.println("Por favor, introduzca resultados de las pruebas que van desde 0 a 100.");
         System.out.println("Para finalizar el programa ingresar un valor mayor a 100 .");
@@ -36,13 +44,6 @@ public class CalcularPromedioCalificaciones {
                 scoreTotal = scoreTotal + testScore;
             }
         }
-
-        // mostrar el numero de puntuacion, la puntuacion total, y la puntuacion media
-        double averageScore = scoreTotal / scoreCount;
-        String message = "\n"
-                + "Cantidad de muestra:   " + scoreCount + "\n"
-                + "puntuacion total:   " + scoreTotal + "\n"
-                + "puntuacion media: " + averageScore + "\n";
-        System.out.println(message);
+CalcularPromedioCalificaciones.printMensaje(scoreTotal, scoreTotal);
     }
 }

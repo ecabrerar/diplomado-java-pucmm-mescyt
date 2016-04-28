@@ -57,10 +57,18 @@ public static void main(String[] args){
   System.out.println("result7 : "+result7);
 
   double result8 = a / b; // result8 = 2.5
-  System.out.println("result7 : "+result7);
+  System.out.println("result8 : "+result7);
 
   //Ejercicios: Realizar operaciones que involucren números enteros (int) y de coma flotante(double)
 
+    System.out.println("x: "+x);
+    System.out.println("y: "+y);
+  
+      
+    double division =  x / y;
+    System.out.println(String.format("%.2f",division));
+  
+    
  }
 
 }

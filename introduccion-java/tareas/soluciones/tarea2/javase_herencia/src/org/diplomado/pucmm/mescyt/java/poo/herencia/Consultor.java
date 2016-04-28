@@ -2,14 +2,17 @@ package org.diplomado.pucmm.mescyt.java.poo.herencia;
 
 import java.util.Date;
 
-public class Consultor extends Persona  {
+public class Consultor extends Persona implements Sueldo{
     private double horaTrabajadas;
     private double precioHoras;
+
+    public Consultor() {
+    }    
+    
     
     public Consultor(String string, String string1, String string2, Date date) {
         super(string, string1, string2, date);
-    }
-    
+    }   
 
 
     @Override

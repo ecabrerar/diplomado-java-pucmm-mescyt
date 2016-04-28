@@ -2,7 +2,7 @@ package org.diplomado.pucmm.mescyt.java.poo.herencia;
 
 import java.util.Date;
 
-public class Empleado  implements Sueldo{
+public class Empleado extends Persona implements Sueldo{
     private double sueldoFijo;
     private double horasExtras;
     private double preciosHorasExtras;
