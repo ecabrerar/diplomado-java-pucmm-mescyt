@@ -1,4 +1,4 @@
-##Aprendiendo A Diseñar Las Clases De Un Programa A Partir De Un Escenario Dado. 
+##Aprendiendo a diseñar las clases de un programa a partir de un escenario dado. 
 
 Supongamos que tenemos que desarrollar una aplicación   que gestione los alquileres de 
 DVDs en un vídeo­club. 
