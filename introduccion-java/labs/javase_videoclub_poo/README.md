@@ -467,3 +467,468 @@ public class Cliente {
 
 
 ```
+
+###Paso 4: 
+Separar los cálculos de las operaciones de E/S En el método  getFactura(), estamos mezclando cálculos útiles con las  llamadas a  System.out.println() que generar el informe: 
+a)Creamos un método independiente para calcular el gasto total realizado por un cliente. 
+
+```java
+
+private double getImporteTotal(){
+        
+        double total = 0;
+      
+        for(Alquiler alq: alquileres){
+            
+            total += alq.getImporte();
+         }
+         
+         return total;
+    }
+
+```
+
+b)Creamos otro método independiente para calcular los puntos acumulados por un cliente en el programa de puntos del vídeo­club.
+
+```java
+ 
+private int getPuntos(){
+        int puntos = 0;
+      
+        for(Alquiler alq: alquileres){
+            
+            puntos += alq.getPuntos();
+         }
+         
+         return puntos;
+    }
+
+
+```
+
+Tras los cambios anteriores en la clase Cliente, la generación de la factura es bastante más sencilla que antes: 
+
+```java
+
+package org.diplomado.pucmm.mescyt.java.paso4;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author ecabrerar
+ */
+public class Cliente {
+    private String nombre;
+    private String telefono;
+    private List<Alquiler> alquileres;
+    
+    public Cliente(){
+        alquileres= new ArrayList<>();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    public void addAquiler(Alquiler alquiler){
+        this.alquileres.add(alquiler);
+    }
+    
+    public List<Alquiler> getAlquileres(){
+        return alquileres;
+    }
+    
+    public String getFactura(){
+        
+        StringBuilder sb = new StringBuilder(100);       
+              
+        for(Alquiler alq: alquileres){            
+                  
+             sb.append("Titulo pelicula :").append(alq.getDvd().getTitulo());
+             sb.append("Importe :").append(alq.getImporte());
+             sb.append("\n");
+        }
+        
+        sb.append("Total:").append(getImporteTotal()); 
+        sb.append("Puntos :").append(getPuntos());
+        
+        return sb.toString();
+    }
+    
+    
+    private double getImporteTotal(){
+        
+        double total = 0;
+      
+        for(Alquiler alq: alquileres){
+            
+            total += alq.getImporte();
+         }
+         
+         return total;
+    }
+    
+    private int getPuntos(){
+        int puntos = 0;
+      
+        for(Alquiler alq: alquileres){
+            
+            puntos += alq.getPuntos();
+         }
+         
+         return puntos;
+    }
+}
+
+```
+
+###Paso 5:
+Movemos la implementación del método getImporte() de la clase  Alquiler al lugar que parece más natural si los precios van ligados  a la película que se alquila: 
+
+```java
+package org.diplomado.pucmm.mescyt.java.paso5;
+
+/**
+ *
+ * @author ecabrerar
+ */
+public class DVD {
+
+    private final String titulo;
+    private final TipoPelicula tipo;
+
+    public DVD(String titulo, TipoPelicula tipo) {
+        this.titulo = titulo;
+        this.tipo = tipo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public TipoPelicula getTipo() {
+        return tipo;
+    }
+
+    public double getImporte(int tiempo) {
+
+        double importe = 0;
+        
+        switch (getTipo()) {
+            case NORMAL:
+                importe += 70;
+
+                if (tiempo > 2) {
+                    importe += (tiempo - 2) * 5;
+                }
+
+                break;
+            case INFANTIL:
+
+                importe += 60;
+
+                if (tiempo > 3) {
+                    importe += (tiempo - 3) * 5;
+                }
+
+                break;
+            case NOVEDAD:
+                importe += tiempo * 80;
+                break;
+
+            default:
+                break;
+        }
+        return importe;
+    }
+
+}
+
+public class Alquiler {
+
+    .....
+    
+    public double getImporte(){
+       return dvd.getImporte(tiempo);
+    }
+            
+
+}
+
+
+```
+
+###Paso 6:
+Hacemos lo mismo con el método getPuntos():
+
+```java
+public class DVD {
+
+    ...
+
+    public int getPuntos(int tiempo) {
+        int puntos = 0;
+        if (TipoPelicula.NOVEDAD.equals(getTipo().NOVEDAD)
+                && tiempo > 1) {
+            puntos++;
+        }
+        return puntos;
+    }
+
+}
+
+public class Alquiler {
+   .....
+
+   public int getPuntos(){
+        return dvd.getPuntos(tiempo);
+    }
+
+}
+
+```
+###Paso 7:
+Reemplazar lógica condicional con polimorfismo.
+Queremos darle más flexibilidad a la forma en la que se fijan los  precios de los alquileres de películas, para que se puedan añadir nuevas categorías (por ejemplo, en la creación de promociones) o  para que se puedan ajustar las tarifas.
+
+NOTA: 
+¿Por qué no creamos una jerarquía de tipos de películas? 
+ 
+Porque las películas pueden cambiar de categoría con el tiempo  (dejan de ser una novedad) 
+pero siguen manteniendo su identidad. 
+
+Creamos la jerarquía correspondiente a las políticas de precios: 
+
+```java
+
+package org.diplomado.pucmm.mescyt.java.paso7;
+
+/**
+ *
+ * @author ecabrerar
+ */
+public abstract class Tarifa {
+    public abstract TipoPelicula getTipo();
+}
+
+public class TarifaNormal extends Tarifa{
+
+    @Override
+    public TipoPelicula getTipo() {
+       return TipoPelicula.NORMAL;
+    }
+    
+}
+
+public class TarifaInfantil extends Tarifa {
+
+    @Override
+    public TipoPelicula getTipo() {
+        return TipoPelicula.INFANTIL;
+    }
+
+}
+
+public class TarifaEstreno extends Tarifa{
+
+    @Override
+    public TipoPelicula getTipo() {
+       return TipoPelicula.NOVEDAD;
+    }
+    
+}
+
+
+```
+
+A continuación, en la clase DVD, sustituimos el atributo tipo por un  objeto de tipo Tarifa, en 
+el cual recaerá luego la responsabilidad de  establecer el precio correcto.
+
+```java
+
+public class DVD {
+
+    private final String titulo;
+    private Tarifa tarifa;
+
+    public DVD(String titulo, TipoPelicula tipo) {
+        this.titulo = titulo;
+        setTipo(tipo);
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public TipoPelicula getTipo() {
+        return tarifa.getTipo();
+    }
+    
+    private void setTipo(TipoPelicula tipo){
+           switch (tipo) {
+            case NORMAL:
+              tarifa = new TarifaNormal();               
+
+                break;
+            case INFANTIL:
+                tarifa = new TarifaInfantil();             
+
+                break;
+            case NOVEDAD:
+               tarifa = new TarifaEstreno();
+                
+            default:
+                break;
+        }
+    }
+
+....
+ }
+```
+
+Finalmente, cambiamos la implementación de getImporte()
+```java
+package org.diplomado.pucmm.mescyt.java.paso7;
+
+/**
+ *
+ * @author ecabrerar
+ */
+public abstract class Tarifa {
+    public abstract TipoPelicula getTipo();
+     public abstract double getImporte(int tiempo);
+}
+
+public class TarifaNormal extends Tarifa {
+
+    @Override
+    public TipoPelicula getTipo() {
+        return TipoPelicula.NORMAL;
+    }
+
+    @Override
+    public double getImporte(int tiempo) {
+        double importe = 70;
+
+        if (tiempo > 2) {
+            importe += (tiempo - 2) * 5;
+        }
+        return importe;
+    }
+
+public class TarifaInfantil extends Tarifa {
+
+    @Override
+    public TipoPelicula getTipo() {
+        return TipoPelicula.INFANTIL;
+    }
+
+    @Override
+    public double getImporte(int tiempo) {
+
+        double importe = 60;
+
+        if (tiempo > 3) {
+            importe += (tiempo - 3) * 5;
+        }
+
+        return importe;
+    }
+
+}
+
+public class TarifaEstreno extends Tarifa{
+
+    @Override
+    public TipoPelicula getTipo() {
+       return TipoPelicula.NOVEDAD;
+    }
+
+    @Override
+    public double getImporte(int tiempo) {
+        return tiempo * 80;
+    }
+    
+}
+
+public class DVD {
+
+   ...
+   
+    public double getImporte(int tiempo) {
+        return tarifa.getImporte(tiempo);
+    }
+ 
+  ...
+ 
+}
+
+```
+
+###Paso 8: 
+Reemplazar lógica condicional con polimorfismo II. 
+Repetimos el mismo proceso de antes para el método getPuntos()
+```java
+
+package org.diplomado.pucmm.mescyt.java.paso8;
+
+/**
+ *
+ * @author ecabrerar
+ */
+public abstract class Tarifa {
+
+    public abstract TipoPelicula getTipo();
+
+    public abstract double getImporte(int tiempo);
+
+    public int getPuntos(int tiempo) {
+        return 0;
+    }
+}
+
+public class TarifaEstreno extends Tarifa{
+
+    @Override
+    public TipoPelicula getTipo() {
+       return TipoPelicula.NOVEDAD;
+    }
+
+    @Override
+    public double getImporte(int tiempo) {
+        return tiempo * 80;
+    }
+
+    @Override
+    public int getPuntos(int tiempo) {
+     return   tiempo > 1 ? 1:0;
+    
+    }
+    
+}
+
+public class DVD {
+
+...
+
+    public int getPuntos(int tiempo) {
+        return tarifa.getPuntos(tiempo);
+    }
+...
+}
+
+```
