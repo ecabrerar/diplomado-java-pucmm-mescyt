@@ -1,5 +1,9 @@
+package org.diplomado.pucmm.mescyt.java.excepciones;
 
-
+/**
+ * 
+ * @author ecabrerar
+ */
 public class CrearExcepcion extends Exception {
     
     

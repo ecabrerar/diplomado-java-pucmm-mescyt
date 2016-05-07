@@ -1,6 +1,11 @@
-
+package org.diplomado.pucmm.mescyt.java.excepciones;
 
 import java.util.InputMismatchException;
+
+/**
+ * 
+ * @author ecabrerar
+ */
 
 public class CapturarExcepcion {
     public static void main(String[] args) {
