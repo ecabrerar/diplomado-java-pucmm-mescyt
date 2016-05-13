@@ -34,12 +34,21 @@ public class ManejandoExcepciones {
         } 
     }
     
-    public void excepcionesArrgelo(String... valores){
+    public void excepcionesArrgelo(String... valores) throws ClaseExcepcion{
         
         if(valores.length==0){
-             throw new NullPointerException("Valores debe contener algunos elementos");
+             throw new ClaseExcepcion(ClaseExcepcion.DEBE_CONTENER_VALORES);
         }else {
             String primerVal = valores[0]; 
         }        
+    }
+    
+    public static void main(String[] args) {
+        try {
+            ManejandoExcepciones me = new ManejandoExcepciones();
+            me.excepcionesArrgelo("ejemplo");
+        } catch (ClaseExcepcion ex) {
+            Logger.getLogger(ManejandoExcepciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

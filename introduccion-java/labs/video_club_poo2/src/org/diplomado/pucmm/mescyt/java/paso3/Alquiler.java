@@ -6,17 +6,25 @@
 package org.diplomado.pucmm.mescyt.java.paso3;
 
 /**
- *
+ * Clase alquiler : <b>Ejemplo<b>
  * @author ecabrerar
  */
 public class Alquiler {
     private DVD dvd;
     private int tiempo;   
 
+    /**
+     * 
+     * @return 
+     */
     public DVD getDvd() {
         return dvd;
     }
 
+    /**
+     * Metodo que recibe un objeto del tipo DVD
+     * @param dvd 
+     */
     public void setDvd(DVD dvd) {
         this.dvd = dvd;
     }

@@ -5,6 +5,7 @@
  */
 package org.diplomado.pucmm.mescyt.java.principal;
 
+import java.util.Optional;
 import org.diplomado.pucmm.mescyt.java.paso3.Alquiler;
 import org.diplomado.pucmm.mescyt.java.paso3.Cliente;
 import org.diplomado.pucmm.mescyt.java.paso3.DVD;
@@ -36,10 +37,27 @@ public class VideoClub {
         c.addAquiler(alq1);
         c.addAquiler(alq2);
         
+        Optional<DVD> dvd2 = getDVD();
+        dvd2.orElse(dvd1);
+        
+        Optional.of(alq2);
+        Optional.ofNullable(alq2);
+        
+        if(getDVD().isPresent()){
+            System.out.println(getDVD().get());         
+        }        
+        
+        
         System.out.println(c.getFactura());
         
     } 
     
+    
+    private Optional<DVD> getDVD(){
+        Optional<DVD> opDvd= Optional.empty();
+        
+        return opDvd;
+    }
     
      public static void main(String[] args) {
         VideoClub vc = new VideoClub();
