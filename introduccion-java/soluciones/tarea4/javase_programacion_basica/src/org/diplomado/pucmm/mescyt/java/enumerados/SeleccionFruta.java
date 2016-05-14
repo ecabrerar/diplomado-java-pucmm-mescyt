@@ -33,53 +33,56 @@ public class SeleccionFruta {
     private void capturarTeclado() {
         System.out.println("\n");
 
-        Scanner sc = new Scanner(System.in);
-      
-        boolean ejecutar = true;
-        while (ejecutar) {
+        try (Scanner sc = new Scanner(System.in)) {
 
-            System.out.println("Fruta:");
-            String fruta = sc.next();
+            boolean ejecutar = true;
+            while (ejecutar) {
 
-            if (Fruta.esFrutaMiembro(fruta)) {
-                Fruta seleccionada = Fruta.valueOf(fruta.toUpperCase());
-                decirSiTeGusta(seleccionada);
-            } else {
-                System.out.println(String.format("Opción digitada: '%s', no es válida !!", fruta));
+                System.out.println("Fruta:");
+                String fruta = sc.next();
+
+                if (Fruta.esFrutaMiembro(fruta)) {
+                    Fruta seleccionada = Fruta.valueOf(fruta.toUpperCase());
+                    decirSiTeGusta(seleccionada);
+                } else {
+                    System.out.println(String.format("Opción digitada: '%s', no es válida !!", fruta));
+                }
+
+                System.out.println("Continuar ? (s/n)");
+
+                ejecutar = esFinalizacion(sc);
             }
-
-            System.out.println("Continuar ? (s/n)");
-
-           ejecutar = esFinalizacion(sc);
         }
     }
 
     /**
-     * 
-     * Obliga que el usuario digite las letras s o n para salir o continuar la ejecucion
-     * Cuando no digita una de las opciones validas continua pidiendo valores por el teclado 
-     * hasta que una opcion valida sea digitada. 
-     * En este ejemplo hacemos uso del metodo esFinalizacion(Scanner scanner) de forma recursiva
+     *
+     * Obliga que el usuario digite las letras s o n para salir o continuar la
+     * ejecucion Cuando no digita una de las opciones validas continua pidiendo
+     * valores por el teclado hasta que una opcion valida sea digitada. En este
+     * ejemplo hacemos uso del metodo esFinalizacion(Scanner scanner) de forma
+     * recursiva
+     *
      * @param scanner
-     * @return 
+     * @return
      */
     private boolean esFinalizacion(Scanner scanner) {
         String opcion = scanner.next();
         System.out.println();
-        
-        boolean esEjecutar ;
+
+        boolean esEjecutar;
 
         if ("n".equalsIgnoreCase(opcion)) {
             esEjecutar = false;
-        } else if("s".equalsIgnoreCase(opcion)){
+        } else if ("s".equalsIgnoreCase(opcion)) {
             esEjecutar = true;
-        }else {
+        } else {
             System.out.println(String.format("Opción digitada: '%s', no es válida !!", opcion));
             System.out.println("Continuar ? (s/n)");
-           esEjecutar = esFinalizacion(scanner);
+            esEjecutar = esFinalizacion(scanner);
         }
-        
-      return esEjecutar;
+
+        return esEjecutar;
     }
 
     private void decirSiTeGusta(Fruta fruta) {
