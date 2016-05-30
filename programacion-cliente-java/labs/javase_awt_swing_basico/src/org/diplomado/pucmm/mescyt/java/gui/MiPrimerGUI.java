@@ -54,9 +54,9 @@ public class MiPrimerGUI extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, texto.getText());
-            }
-        });
+                JOptionPane.showMessageDialog(null, "Mensaje", " Mensaje del Sistema", JOptionPane.ERROR_MESSAGE);
+        
+            }});
         
         
         panel.add(texto);
