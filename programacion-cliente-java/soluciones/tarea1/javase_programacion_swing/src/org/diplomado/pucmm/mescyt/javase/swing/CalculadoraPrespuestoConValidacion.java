@@ -5,6 +5,8 @@
  */
 package org.diplomado.pucmm.mescyt.javase.swing;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -297,6 +299,9 @@ public class CalculadoraPrespuestoConValidacion extends javax.swing.JDialog {
             mensajeConIconoAlerta(panel, JOptionPane.INFORMATION_MESSAGE);
 
         }
+        
+        //Limpiar valores gastos fijos
+        gastosFijosMap.clear();
 
     }
 
@@ -318,7 +323,14 @@ public class CalculadoraPrespuestoConValidacion extends javax.swing.JDialog {
 
         JLabel labelGastosFijos = new JLabel(String.format("Gastos Fijos: %s", formatoMoneda.format(sumatoriaGastosFijos)));
 
-        JLabel labelBalance = new JLabel(String.format("Balance: %s", formatoMoneda.format(balance)));
+        JLabel labelBalance = new JLabel(String.format("Balance: %s", formatoMoneda.format(balance)));      
+        labelBalance.setFont(new Font("Courier", Font.BOLD,12));
+        
+        if(balance >= 0){
+            labelBalance.setForeground(Color.GREEN);
+        } else if(balance < 0){
+            labelBalance.setForeground(Color.RED);
+        }
 
         JPanel panel = new JPanel(new GridLayout(0, 1));
 
