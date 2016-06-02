@@ -5,6 +5,7 @@
  */
 package org.diplomado.pucmm.mescyt.java.gui;
 
+import java.text.NumberFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,10 +14,24 @@ import javax.swing.JOptionPane;
  */
 public class FrBasicoCampo extends javax.swing.JFrame {
 
+    //Declaracion de propiedades o atributos
+    private final int vlrEntero = 0;
+    private final double vlrDecimal = 0.0;
+    
+    //Declaracion de formatos
+    private final NumberFormat formatoDecimal;
+    private final NumberFormat formatoEntero;
+    
     /**
      * Creates new form FrBasicoCampoTexto
      */
     public FrBasicoCampo() {
+        //Inicializar los formatos
+        formatoDecimal = NumberFormat.getNumberInstance();
+        formatoDecimal.setMinimumFractionDigits(3);
+        
+        formatoEntero = NumberFormat.getNumberInstance();        
+        
         initComponents();
     }
 
@@ -32,12 +47,14 @@ public class FrBasicoCampo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField(formatoEntero);
+        jFormattedTextField2.setValue(vlrEntero);
+        jFormattedTextField2.setColumns(10);
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        jFormattedTextField3 = new javax.swing.JFormattedTextField(formatoDecimal);
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -53,11 +70,6 @@ public class FrBasicoCampo extends javax.swing.JFrame {
         }
         jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
         jFormattedTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel2.setText("Numericos");
@@ -72,11 +84,10 @@ public class FrBasicoCampo extends javax.swing.JFrame {
 
         jLabel4.setText("Decimales");
 
-        try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#.##0")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jFormattedTextField3.setValue(vlrDecimal);
+        jFormattedTextField3.setColumns(10);
+
+        jPasswordField1.setToolTipText("Clave a validar \"adminadmin\"");
 
         jLabel5.setText("Clave");
 
@@ -178,12 +189,16 @@ public class FrBasicoCampo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        char[] password = jPasswordField1.getPassword();
+
+        //Para validar la clave es necesario convertirla a un String
         
-       jPasswordField1.getPassword();
+        if("adminadmin".equals(String.valueOf(password))){
+            JOptionPane.showMessageDialog(this, "Acceso Correcto", "Mensaje del Sistema", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+             JOptionPane.showMessageDialog(this, "Acceso Incorrecto", "Mensaje del Sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
        
-       
-        
-        JOptionPane.showMessageDialog(this, jPasswordField1.getPassword());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
