@@ -26,13 +26,16 @@ public class UtilPantalla {
     }
     
     public void centrar(){
-        Dimension d = dialog.getSize();
+        //Obtener la dimension del JDialog
+        Dimension d = dialog.getSize(); 
+        //Obtener la dimension de la pantalla
         Dimension d1 = dialog.getToolkit().getScreenSize();
         
         dialog.setLocation((d1.width-d.width)/2, (d1.height-d.height)/2);
     }
     
     public void maximizar(){
+        //En el caso de los JFrame se recomienda usar la siguiente sintaxis.
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 }
