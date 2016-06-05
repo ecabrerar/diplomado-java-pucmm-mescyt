@@ -37,7 +37,7 @@ public class SelectorFruta extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -48,7 +48,7 @@ public class SelectorFruta extends javax.swing.JDialog {
 
         jLabel2.setText("Fruta: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mango", "Naranja", "Melón", "Zapote", "Sandía" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mango", "Naranja", "Melón", "Zapote", "Sandía" }));
         jComboBox1.setSelectedIndex(-1);
 
         jButton1.setText("Aceptar");
