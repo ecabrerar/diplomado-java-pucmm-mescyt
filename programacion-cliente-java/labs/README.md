@@ -1,2 +1,2 @@
 ####Laboratorios
-* [Centrar Componentes Swing Pantalla](labs/CentrarComponentesSwingPantalla.md)
+* [Centrar Componentes Swing Pantalla](CentrarComponentesSwingPantalla.md)
