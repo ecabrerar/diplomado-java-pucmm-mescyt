@@ -5,6 +5,6 @@
 * [Campo de Texto Formateado en Swing](CampoTextoFormateadoSwing.md)
 * [Campo de Password](CampoPasswordSwing.md)
 * [Manejo y uso de Eventos](ManejoEventosSwing.md)
-* [Calculadora de Prestamo usando NumberFormat y Formatted Field](CalculadoradePrestamoUsandoNumberFormatYFormattedField)
+* [Calculadora de Prestamo usando NumberFormat y Formatted Field](CalculadoradePrestamoUsandoNumberFormatYFormattedField.md)
 
  
