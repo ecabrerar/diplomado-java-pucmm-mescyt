@@ -14,16 +14,15 @@ Agregar los componentes usando el diseñador que nos provee netbeans.
 ```
 
 Creamos valores por defecto
-
-//Campos con valores iniciales
 ```java
+//Campos con valores iniciales
 	private double vlrMonto = 100000;
 	private double vlrTasa = 7.0;  //7.5%
 	private int numTiempo = 5;
 	private double cuotaMensual;
 ```
 
-//Creamos metodos para inicializar las anteriores
+Creamos metodos para inicializar las anteriores
 ```java
  private void inicializarFormatos() {
 
@@ -37,7 +36,7 @@ Creamos valores por defecto
 
  }
 ```
-//Llamamos el método en el constructor para que las variables sean inicializados al momento de crear la instancia
+Llamamos el método en el constructor para que las variables sean inicializados al momento de crear la instancia
 ```java
 public CalculadoraPrestamo(java.awt.Frame parent, boolean modal) {
 
