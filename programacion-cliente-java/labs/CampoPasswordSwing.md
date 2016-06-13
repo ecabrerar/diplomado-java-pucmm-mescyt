@@ -8,7 +8,7 @@ Como otra medida de seguridad, un campo de contraseña almacena su valor como un
 
 Al igual que un campo de texto ordinario, un campo de contraseña dispara un evento action cuando el usuario indica que se ha completado la introducción de texto, por ejemplo, pulsando la tecla Enter.
 
-Declaracion de un campo **JPasswordField**
+Declaración de un campo **JPasswordField**
 ```java
 JPasswordField jPasswordField1;
 ```
@@ -29,7 +29,10 @@ String cadenaTexto = String.valueOf(password);
 ```
 En algunas ocasiones necesitamos confirmar una contraseña y le pedimos al usuario que vuelva a digitar la contraseña.
 
-Para realizar la confirmación, primero debemos agregar dos campos **JPasswordField, **el primero para capturar la contraseña y el segundo para confirmar.![image alt text](graphics/p_image_1.png)
+Para realizar la confirmación, primero debemos agregar dos campos **JPasswordField, **el primero para capturar la contraseña y el segundo para confirmar.
+
+![image alt text](graphics/p_image_1.png)
+
 ```java
 JPasswordField jPasswordField1 = new JPasswordField();
 
