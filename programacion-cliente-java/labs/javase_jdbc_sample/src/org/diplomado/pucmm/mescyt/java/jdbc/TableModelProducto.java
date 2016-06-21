@@ -16,7 +16,7 @@ import org.diplomado.pucmm.mescyt.java.jdbc.encapsulados.Producto;
 public class TableModelProducto extends AbstractTableModel {
 
     String[] columnas = {"Id", "Descripcion", "Cantidad"}; //Columnas
-    List<Producto> data;
+    private List<Producto> data;
 
     public TableModelProducto() {
 
