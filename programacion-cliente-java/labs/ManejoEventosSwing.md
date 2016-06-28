@@ -10,13 +10,13 @@ Nosotros sólo debemos de preocuparnos de qué acciones va a realizar nuestra ap
 
 Un evento es un objeto que representa un cambio en un componente, este es generalmente producido por  el  usuario  al  realizar  alguna  operación,  por  ejemplo,  escribir  en  un  campo  de  texto  o  hacer  click sobre un botón.
 
-El modelo de eventos de Java Cada lenguaje de programación tiene su propio modelo de eventos:
+Cada lenguaje de programación tiene su propio modelo de eventos:
 
-En Visual Basic, cada componente genera eventos específicos y nosotros redefinimos la respuesta del componente a cada evento (modelo simple pero bastante inflexible).
+En **Visual Basic**, cada componente genera eventos específicos y nosotros redefinimos la respuesta del componente a cada evento (modelo simple pero bastante inflexible).
 
 En C, todos los eventos se sitúan en una cola: debemos de ir leyendo los eventos de esta cola y decidir qué acción realizar en función del evento extraído de la cola (tedioso de programar).
 
-En Java, se definen clases auxiliares (**event listeners**) que pueden recibir eventos de tipos específicos (p.ej. el clic del botón del ratón). Estas clases se asocian luego a componentes específicos.
+En **Java**, se definen clases auxiliares (**event listeners**) que pueden recibir eventos de tipos específicos (p.ej. el clic del botón del ratón). Estas clases se asocian luego a componentes específicos.
 
 A diferencia de VB, el manejador no viene predeterminado (mayor flexibilidad).
 
