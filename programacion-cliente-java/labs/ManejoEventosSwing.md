@@ -124,9 +124,9 @@ Los eventos de tecla indican cuando el usuario está escribiendo en el teclado. 
 
 **Item Listener**
 
-Estos eventos son disparados por los componentes que implementan la interfaz ItemSelectable.
+Estos eventos son disparados por los componentes que implementan la interfaz **ItemSelectable**.
 
-En general, los componentes que implementan la interfaz ItemSelectable mantienen en estado prendido / apagado para uno o más elementos.
+En general, los componentes que implementan la interfaz **ItemSelectable** mantienen en estado prendido / apagado para uno o más elementos.
 
 Los componentes Swing que generan estos eventos son **check boxes**, **check menu items**, **toggle buttons** etc... y **combo boxes**.
 
