@@ -42,34 +42,22 @@ Cada tipo de evento **XxxEvent** tiene asociada una interfaz **XxxListener** que
 
 Para simplificar la implementación de algunos manejadores de eventos, el paquete **java.awt.event **incluye clases base **XxxAdapter** que implementan las interfaces **XxxListener**.
 
-<table>
-  <tr>
-    <td>Interfaces </td>
-    <td>Clases Abstractas </td>
-  </tr>
-  <tr>
-    <td>ActionListener
-AdjustmentListener
-AWTEventListener
-ComponentListener
-ContainerListener
-FocusListener
-InputMethodListener
-ItemListener
-KeyListener
-MouseListener
-MouseMotionListener
-TextListener
-WindowListener</td>
-    <td>ComponentAdapter
-ContainerAdapter  
-ContainerEvent
-FocusAdapter
-KeyAdapter  
-MouseMotionAdapter  
-WindowAdapter</td>
-  </tr>
-</table>
+
+| Interfaces | Clases Abstractas |
+|------------|-------------------|
+|ActionListener|ComponentAdapter |
+|AdjustmentListener|ContainerAdapter|
+|AWTEventListener|ContainerEvent|
+|ComponentListener|FocusAdapter|
+|ContainerListener|KeyAdapter
+|FocusListener|MouseMotionAdapter
+|InputMethodListener|WindowAdapter
+|ItemListener||
+|KeyListener||
+|MouseListener||
+|MouseMotionListener||
+|TextListener||
+|WindowListener||
 
 
 **Conociendo los listeners más utilizados**
