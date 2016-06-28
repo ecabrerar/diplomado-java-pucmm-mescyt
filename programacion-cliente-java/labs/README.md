@@ -9,4 +9,6 @@
 * [Calculadora de Prestamo usando NumberFormat y Formatted Field](CalculadoradePrestamoUsandoNumberFormatYFormattedField.md)
 * [Conectividad de Java a Base  de Datos(JDBC)](ConectividadJavaBaseDeDatosJDBC.md)
 	* [Consulta Básica Usando JDBC y DerbyDB](ConsultaBasicaUsandoJDBCyDerbyDB.doc.md)
+* [Hilos](Hilos.md)
+* [Introducción Patrones Diseños](IntroPatronesDisenos.md)
  
