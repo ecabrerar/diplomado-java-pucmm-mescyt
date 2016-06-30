@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import org.diplomado.pucmm.mescyt.Auto;
 import org.diplomado.pucmm.mescyt.Color;
 import org.diplomado.pucmm.mescyt.Marca;
+import org.diplomado.pucmm.mescyt.renderers.ColorTableRenderer;
 
 
 
@@ -47,6 +48,9 @@ public class DgShowRoom extends javax.swing.JDialog {
         
         jTable1.setRowSelectionAllowed(true);  //Permitir seleccionar fila
         jTable1.setRowSelectionInterval(0, 0); //seleccionar fila
+        
+        ColorTableRenderer colorRenderer = new ColorTableRenderer(true);
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(colorRenderer);
     }
     
     private void initComboMarca(){
