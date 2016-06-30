@@ -13,6 +13,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -24,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.event.MouseInputListener;
 
 /**
  *
@@ -74,6 +78,16 @@ public class LabComponentesGUIEventos extends JDialog {
             }
         });
         
+        txtVlrNumero.addPropertyChangeListener("value",new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                
+                  Double numero = ((Long) txtVlrNumero.getValue()).doubleValue();
+                  
+                  JOptionPane.showMessageDialog(null, "Valor del campo "+numero);
+            }
+        });
+        
         comboBox = new JComboBox();
         inicializarCombo();
         comboBox.setSelectedIndex(-1);
@@ -86,6 +100,46 @@ public class LabComponentesGUIEventos extends JDialog {
             }
         });
 
+        comboBox.addMouseListener(new MouseInputListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                  System.out.println(" MouseInputListener : mouseClicked");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+                 System.out.println(" MouseInputListener : mousePressed");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+                  System.out.println(" MouseInputListener : mouseReleased");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                 System.out.println(" MouseInputListener : mouseEntered");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+                System.out.println(" MouseInputListener : mouseExited");
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                System.out.println(" MouseInputListener : mouseDragged");
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                  System.out.println(" MouseInputListener : mouseMoved");
+            }
+        });
+        
         JPanel panelPrincipal = new JPanel();
         panelPrincipal.setLayout(new GridLayout(2, 1));
 

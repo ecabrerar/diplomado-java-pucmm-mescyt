@@ -256,6 +256,54 @@ Los eventos del ratón notifican cuando el usuario utiliza el ratón (o disposit
 
 Los eventos del ratón se producen cuando el cursor entra o sale de la zona en la pantalla de un componente y cuando el usuario presiona o libera uno de los botones del ratón.
 
+```java
+
+....
+
+comboBox.addMouseListener(new MouseInputListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                  System.out.println(" MouseInputListener : mouseClicked");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+                 System.out.println(" MouseInputListener : mousePressed");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+                  System.out.println(" MouseInputListener : mouseReleased");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                 System.out.println(" MouseInputListener : mouseEntered");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+                System.out.println(" MouseInputListener : mouseExited");
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                System.out.println(" MouseInputListener : mouseDragged");
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                  System.out.println(" MouseInputListener : mouseMoved");
+            }
+        });
+
+....
+
+```
+
 **Property Change Listener**
 
 Este evento se produce cuando ocurre un cambio del valor ligado a la propiedad.
@@ -266,11 +314,36 @@ Quiere implementar un campo de texto con formato y necesitan una manera de detec
 
 Se puede registrar un detector de cambio de propiedad en el campo de texto con formato para escuchar a los cambios en la propiedad de valor.
 
+```java
+
+public class LabComponentesGUIEventos extends JDialog {
+
+
+ private void inicializarComponentes(){
+
+   	JFormattedTextField txtVlrNumero = new JFormattedTextField(formatoNumero);
+        txtVlrNumero.setColumns(10);
+        txtVlrNumero.setValue(vlrNumero);
+        txtVlrNumero.addPropertyChangeListener("value",new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                
+                  Double numero = ((Long) txtVlrNumero.getValue()).doubleValue();
+                  
+                  JOptionPane.showMessageDialog(null, "Valor del campo "+numero);
+            }
+        });
+   }
+}
+
+```
+
 **Focus Listener**
 
 Ocurren cada vez que un componente gana o pierde el foco del teclado.
 
 ```java
+
 public class LabComponentesGUI extends JDialog implements FocusListener {
 
  ...
