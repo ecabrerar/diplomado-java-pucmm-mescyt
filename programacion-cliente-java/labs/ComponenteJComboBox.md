@@ -15,7 +15,7 @@ Cuando usamos el editor de NetBeans este agrega automáticamente una instancia d
 
 Si queremos tener más control sobre nuestra aplicación debemos crear nuestro propio **ComboBoxModel**.
 
-Para a crear un ComboBoxModel, creamos una nueva clase Java y extender de la clase abstracta AbstractListModel, la cual nos provee varios métodos necesarios para el ComboBoxModel.
+Para a crear un **ComboBoxModel**, creamos una nueva clase Java y extender de la clase abstracta **AbstractListModel**, la cual nos provee varios métodos necesarios para el **ComboBoxModel**.
 
 Nuestra clase inicial :
 ```java
@@ -25,7 +25,7 @@ public class EjemploComboBoxModel extends AbstractListModel {
 ```
 
 
-Luego implementamos los métodos que nos provee  AbstractListModel :
+Luego implementamos los métodos que nos provee  **AbstractListModel** :
 
 **1- int getSize()**:  debemos sobreescribirlo para que devuelva la cantidad de items que tiene el combo
 
@@ -178,7 +178,7 @@ public class EjemploComboBoxModel extends AbstractListModel {
 }
 ```
 
-Finalmente en el contructor del GUI donde vamos donde queremos usar el ComboBoxModel, le cargamos los datos al JComboBox:
+Finalmente en el contructor del GUI donde vamos donde queremos usar el **ComboBoxModel**, le cargamos los datos al **JComboBox**:
 ```java
 jComboBox1.setModel(new EjemploComboBoxModel());
 ```
@@ -200,7 +200,6 @@ Lo Llamamos desde el contructor:
 ```
 
 **Ejemplo:**
-
 
 Tenemos una clase llamada Auto que contiene las propiedades  **modelo, marca, anio y color.**
 
@@ -423,8 +422,6 @@ Si queremos asignarle nuestro **ComboModelAuto** a un JComboBox cualquier debemo
 
     }
 
-
-
    private void initComboAuto() {
         cbAuto.setModel(new ComboModelAuto());
         cbAuto.setSelectedIndex(-1);
@@ -432,5 +429,5 @@ Si queremos asignarle nuestro **ComboModelAuto** a un JComboBox cualquier debemo
 
 ```
 
-Para mayor información sobre el ejemplo anterior descargar abrir el proyecto (javase_swing_jcombobox)[javase_swing_jcombobox]
+Para mayor información sobre el ejemplo anterior descargar abrir el proyecto [javase_swing_jcombobox](javase_swing_jcombobox)
 
