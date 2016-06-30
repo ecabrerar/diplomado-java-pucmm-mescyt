@@ -14,9 +14,33 @@ FlowLayout ordena los componentes en un flujo direccional, una después de la ot
 
 GridLayout expone componentes de un contenedor en una rejilla rectangular. El recipiente se divide en rectángulos de igual tamaño, y uno de los componentes se coloca en cada rectángulo. Típicamente, un **GridLayout** se construye mediante la especificación del número de filas y columnas.
 
+```java
+
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new GridLayout(0, 1));
+
+```
+
+
+
 **java.awt.BorderLayout**
 
 BorderLayout expone los componentes en cinco regiones: norte, sur, este, oeste y central. A medida que se añade cada componente a un contenedor con un BorderLayout, la ubicación se especifica similar a: contenedor.add(componente, BorderLayout.CENTER);
+
+```java
+
+        JPanel panelPrincipal = new JPanel();
+           panelPrincipal.setLayout(new BorderLayout());
+
+
+        JButton  btnPulsar = new JButton("Pulsar");
+          btnPulsar.addActionListener(this);
+          btnPulsar.setPreferredSize(new Dimension(100,5));
+        
+          panelPrincipal.add(btnPulsar,BorderLayout.LINE_END);
+        
+
+```
 
 **java.awt.CardLayout**
 

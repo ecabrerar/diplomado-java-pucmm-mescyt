@@ -5,6 +5,8 @@
  */
 package org.diplomado.pucmm.mescyt.java.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -57,6 +59,7 @@ implements ActionListener, FocusListener{
         txtVlrNumero.setColumns(10);
         txtVlrNumero.setValue(vlrNumero);
         txtVlrNumero.addFocusListener(this);
+        txtVlrNumero.setPreferredSize(new Dimension(50, 5));
         
         JPanel panelPrincipal = new JPanel();
         panelPrincipal.setLayout(new GridLayout(0, 1));
@@ -75,10 +78,35 @@ implements ActionListener, FocusListener{
                 
         JPanel panelGrande = new JPanel(new GridLayout(3, 1));
         panelGrande.add(panelPrincipal); 
-        panelGrande.add(panelBotones);
+        panelGrande.add(panelBotones);  
+        
+        pack();
+    }
+    
+    private void inicializarComponentesBorderLayout(){
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new BorderLayout());
+        
+        panelPrincipal.add(lblNumero,BorderLayout.LINE_START);
+        panelPrincipal.add(txtVlrNumero,BorderLayout.CENTER);       
+              
+        
+        btnPulsar = new JButton("Pulsar");
+        btnPulsar.addActionListener(this);
+        btnPulsar.setPreferredSize(new Dimension(100,5));
+        
+         panelPrincipal.add(btnPulsar,BorderLayout.LINE_END);
+        
+                
+        JPanel panelGrande = new JPanel(new BorderLayout());
+        panelGrande.add(panelPrincipal,BorderLayout.LINE_START); 
         
         this.add(panelGrande);
+        this.setPreferredSize(new Dimension(300, 200));
+        setResizable(false);      
+        
         pack();
+        
     }
     
     private void inicializarFormatos(){

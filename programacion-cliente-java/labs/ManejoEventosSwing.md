@@ -74,6 +74,51 @@ Cuando el usuario hace clic en un botón, elige un elemento del menú, pulsa Int
 
 El resultado es que un mensaje **actionPerformed** se envía a todos los oyentes de acción que están registrados en el componente correspondiente.
 
+```java
+public class LabComponentesGUI extends JDialog implements ActionListener {
+
+ ...
+
+
+   private void inicializarComponentes(){
+
+   	 JButton btnPulsar = new JButton("Pulsar");
+   	 btnPulsar.addActionListener(this);
+   }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+      JOptionPane.showMessageDialog(this, "Evento "+e.getSource());
+    }
+
+ ...
+}
+
+```
+En lugar de colocar la interfaz ActionListener a nivel de la clase podemos especificarla a nivel del componente usando clase anónima.
+
+```java
+
+public class LabComponentesGUIEventos extends JDialog {
+
+
+    private void inicializarComponentes() {
+
+	JButton btnPulsar = new JButton("Pulsar");
+           btnPulsar.addActionListener(new ActionListener() {
+
+            	@Override
+           	 public void actionPerformed(ActionEvent e) {
+                	 JOptionPane.showMessageDialog(this, "Evento "+e.getSource());
+            	}
+        });
+    }
+}
+```
+
+
 **Window Listeners**
 
 Existen 3 listener para el manejo de eventos de ventana, **WindowListener**, **WindowFocusListener** y **WindowStateListener**.
@@ -118,9 +163,66 @@ Se puede registrar un detector de cambio de propiedad en el campo de texto con f
 
 Ocurren cada vez que un componente gana o pierde el foco del teclado.
 
+```java
+public class LabComponentesGUI extends JDialog implements FocusListener {
+
+ ...
+
+
+   private void inicializarComponentes(){
+
+   	JFormattedTextField txtVlrNumero = new JFormattedTextField(formatoNumero);
+        txtVlrNumero.setColumns(10);
+        txtVlrNumero.setValue(vlrNumero);
+        txtVlrNumero.addFocusListener(this);
+   }
+
+
+    @Override
+    public void focusGained(FocusEvent e) {
+      txtVlrNumero.setValue(null);
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+      
+    }
+
+ ...
+}
+
+```
+En lugar de colocar la interfaz FocusListener a nivel de la clase podemos especificarla a nivel del componente usando clase anónima.
+
+```java
+public class LabComponentesGUIEventos extends JDialog {
+
+
+ private void inicializarComponentes(){
+
+   	JFormattedTextField txtVlrNumero = new JFormattedTextField(formatoNumero);
+        txtVlrNumero.setColumns(10);
+        txtVlrNumero.setValue(vlrNumero);
+        txtVlrNumero.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                txtVlrNumero.setValue(null);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+
+            }
+        });
+   }
+}
+```
+
 **Key Listener**
 
 Los eventos de tecla indican cuando el usuario está escribiendo en el teclado. En concreto, los eventos de tecla son generados por el componente con el foco del teclado cuando el usuario pulsa y suelta las teclas del teclado.
+
 
 **Item Listener**
 
@@ -129,6 +231,28 @@ Estos eventos son disparados por los componentes que implementan la interfaz **I
 En general, los componentes que implementan la interfaz **ItemSelectable** mantienen en estado prendido / apagado para uno o más elementos.
 
 Los componentes Swing que generan estos eventos son **check boxes**, **check menu items**, **toggle buttons** etc... y **combo boxes**.
+
+
+```java
+public class LabComponentesGUIEventos extends JDialog {
+
+
+ private void inicializarComponentes(){
+
+   	JComboBox comboBox = new JComboBox(); 
+        
+        comboBox.addItemListener(new ItemListener() {
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                JOptionPane.showMessageDialog(null, comboBox.getSelectedItem());
+            }
+        });
+
+   }
+}
+```
+
 
 Puedes obtener más información en [https://docs.oracle.com/javase/tutorial/uiswing/events/handling.html](https://docs.oracle.com/javase/tutorial/uiswing/events/handling.html)
 
