@@ -5,12 +5,14 @@
  */
 package org.diplomado.pucmm.mescyt.gui;
 
+import java.awt.Dimension;
 import java.text.NumberFormat;
 import javax.swing.DefaultComboBoxModel;
 import org.diplomado.pucmm.mescyt.Auto;
 import org.diplomado.pucmm.mescyt.Color;
 import org.diplomado.pucmm.mescyt.Marca;
 import org.diplomado.pucmm.mescyt.modelos.ComboModelAuto;
+import org.diplomado.pucmm.mescyt.renderers.ComboBoxColoresRenderer;
 
 /**
  *
@@ -41,6 +43,10 @@ public class DgShowRoom extends javax.swing.JDialog {
     private void initComboColor() {
        cbColor.setModel(new DefaultComboBoxModel(Color.values()));
        cbColor.setSelectedIndex(-1);
+       
+        ComboBoxColoresRenderer colorRenderer = new ComboBoxColoresRenderer();
+        colorRenderer.setPreferredSize(new Dimension(50, 30));
+        cbColor.setRenderer(colorRenderer);        
     }
 
     private void initComboMarca() {

@@ -15,7 +15,7 @@ import org.diplomado.pucmm.mescyt.Marca;
 
 /**
  *
- * @author eudriscabrera
+ * @author ecabrerar
  */
 public class ComboModelAuto extends AbstractListModel implements ComboBoxModel{
     
