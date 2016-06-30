@@ -143,6 +143,113 @@ Las siguientes actividades de ventanas o estados pueden preceder a un evento de 
 
 **Maximizing the window (Maximizar la ventana)** : El aumento de tamaño de una ventana para el tamaño máximo permitido, ya sea en la dirección vertical, la dirección horizontal, o en ambas direcciones.
 
+```java
+
+public class LabComponentesWindowEventos extends JFrame implements WindowListener {
+
+    public LabComponentesWindowEventos() throws HeadlessException {
+        
+        addWindowListener(this);
+    }
+   
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        displayMessage("WindowListener: windowOpened");
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+       displayMessage("WindowListener: windowClosing");
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        displayMessage("WindowListener: windowClosed");
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+         displayMessage("WindowListener: windowIconified");
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+         displayMessage("WindowListener: windowDeiconified");
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+          displayMessage("WindowListener: windowActivated");
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+          displayMessage("WindowListener: windowDeactivated");
+    }
+    
+    
+    private void displayMessage(String msg) {
+        System.out.println(msg);
+    }
+    
+    public static void main(String[] args) {
+        LabComponentesWindowEventos frame = new LabComponentesWindowEventos();
+        frame.setVisible(true);
+        frame.setSize(new Dimension(400, 300));
+    }
+
+}
+
+```
+
+```java
+public class LabComponentesWindowEventosFocus extends JFrame implements WindowFocusListener{
+
+    public LabComponentesWindowEventosFocus() throws HeadlessException {
+        addWindowFocusListener(this);
+    }
+    
+    @Override
+    public void windowGainedFocus(WindowEvent e) {
+        System.out.println("WindowFocusListener : windowGainedFocus");
+    }
+
+    @Override
+    public void windowLostFocus(WindowEvent e) {
+        
+          System.out.println("WindowFocusListener : windowLostFocus");
+    }    
+    
+    public static void main(String[] args) {
+        LabComponentesWindowEventosFocus frm = new LabComponentesWindowEventosFocus();
+        frm.setVisible(true);
+        frm.setSize(400, 300);
+        
+    }    
+}
+```
+
+```java
+public class LabComponentesWindowEventosEstados extends JFrame implements WindowStateListener{
+
+    public LabComponentesWindowEventosEstados() {
+        addWindowStateListener(this);
+    }   
+    
+
+    @Override
+    public void windowStateChanged(WindowEvent e) {
+        System.out.println("WindowStateListener : windowStateChanged");
+    }
+    
+    public static void main(String[] args) {
+        LabComponentesWindowEventosEstados frmEstado = new LabComponentesWindowEventosEstados();
+        frmEstado.setVisible(true);
+        frmEstado.setSize(400, 300);
+    }
+```
+
 **Mouse Listener**
 
 Los eventos del ratón notifican cuando el usuario utiliza el ratón (o dispositivo de entrada similar) para interactuar con un componente.
@@ -222,6 +329,60 @@ public class LabComponentesGUIEventos extends JDialog {
 **Key Listener**
 
 Los eventos de tecla indican cuando el usuario está escribiendo en el teclado. En concreto, los eventos de tecla son generados por el componente con el foco del teclado cuando el usuario pulsa y suelta las teclas del teclado.
+
+```java
+public class LabComponentesKeyEventos extends JDialog implements KeyListener{
+
+ public LabComponentesKeyEventos(Frame owner) {
+        super(owner);
+        inicializarComponentes();
+    }
+
+ private void inicializarComponentes() {
+
+        NumberFormat formatoNumero = NumberFormat.getNumberInstance();
+        formatoNumero.setMinimumFractionDigits(3);
+
+       JFormattedTextField txtVlrNumero = new JFormattedTextField(formatoNumero);
+        txtVlrNumero.setColumns(10);
+        txtVlrNumero.setValue(vlrNumero);
+        txtVlrNumero.setSize(new Dimension(30,5));
+        
+        txtVlrNumero.addKeyListener(this);
+
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new GridLayout(2, 1));
+
+        panelPrincipal.add(txtVlrNumero);
+
+        JPanel panelGrande = new JPanel(new GridLayout(0, 1));
+        panelGrande.add(panelPrincipal);
+
+        this.add(panelGrande);
+        pack();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+        System.out.println(" KeyListener : keyTyped");
+        System.out.println(" "+e.getKeyChar());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+          System.out.println(" KeyListener : keyPressed");
+        System.out.println(" "+e.getKeyChar());
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+          System.out.println(" KeyListener : keyReleased");
+        System.out.println(" "+e.getKeyChar());
+    }
+
+}
+```
 
 
 **Item Listener**

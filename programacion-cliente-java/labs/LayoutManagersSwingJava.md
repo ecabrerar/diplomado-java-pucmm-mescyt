@@ -19,6 +19,16 @@ GridLayout expone componentes de un contenedor en una rejilla rectangular. El re
         JPanel panelPrincipal = new JPanel();
         panelPrincipal.setLayout(new GridLayout(0, 1));
 
+
+	JLabel lblNumero = new JLabel("Numero");
+        
+        JFormattedTextField txtVlrNumero = new JFormattedTextField(formatoNumero);
+        txtVlrNumero.setColumns(10);
+        txtVlrNumero.setValue(vlrNumero);
+        txtVlrNumero.addFocusListener(this);
+        txtVlrNumero.setPreferredSize(new Dimension(50, 5));
+
+
 ```
 
 
@@ -30,14 +40,14 @@ BorderLayout expone los componentes en cinco regiones: norte, sur, este, oeste y
 ```java
 
         JPanel panelPrincipal = new JPanel();
-           panelPrincipal.setLayout(new BorderLayout());
+        panelPrincipal.setLayout(new BorderLayout());
 
 
         JButton  btnPulsar = new JButton("Pulsar");
-          btnPulsar.addActionListener(this);
-          btnPulsar.setPreferredSize(new Dimension(100,5));
+        btnPulsar.addActionListener(this);
+        btnPulsar.setPreferredSize(new Dimension(100,5));
         
-          panelPrincipal.add(btnPulsar,BorderLayout.LINE_END);
+         panelPrincipal.add(btnPulsar,BorderLayout.LINE_END);
         
 
 ```
