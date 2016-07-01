@@ -45,8 +45,10 @@ public class DgShowRoom extends javax.swing.JDialog {
        cbColor.setSelectedIndex(-1);
        
         ComboBoxColoresRenderer colorRenderer = new ComboBoxColoresRenderer();
-        colorRenderer.setPreferredSize(new Dimension(50, 30));
-        cbColor.setRenderer(colorRenderer);        
+        colorRenderer.setPreferredSize(new Dimension(50, 50));
+        
+        cbColor.setRenderer(colorRenderer);   
+        cbColor.setMaximumRowCount(1); //Número de elementos visibles cuando se visualiza el menú.
     }
 
     private void initComboMarca() {

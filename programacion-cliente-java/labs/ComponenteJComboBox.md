@@ -429,5 +429,187 @@ Si queremos asignarle nuestro **ComboModelAuto** a un JComboBox cualquier debemo
 
 ```
 
+**Renderizadores (Renderers)**
+
+Un Combo Box utiliza un renderizador para mostrar cada elemento en su menú. Si el Combo Box es editable, también utiliza el renderizador para mostrar el elemento seleccionado en ese momento. Un Combo Box editable, por el contrario, utiliza un editor para mostrar el elemento seleccionado.
+
+Un renderizador de un Combo Box debe implementar la interfaz ListCellRenderer. El editor de un Combo Box debe implementar ComboBoxEditor.
+
+El renderizador predeterminado sabe cómo representar cadenas de caracteres y los iconos. Si pones otros objetos en un Combo Box, el renderizador predeterminado llama al método toString para proporcionar una cadena a mostrar. Se puede personalizar la forma en que un Combo Box hace por sí mismo y de sus elementos mediante la implementación de un ListCellRenderer propio.
+
+
+Ejemplo:
+Crear un renderizador para un Combo Box, donde mostraremos el color correspondiente al texto de cada elemento del Combo Box Model.
+
+Tenemos un Enum que representa los colores disponibles.
+
+```java
+/**
+ *
+ * @author ecabrerar
+ */
+public enum Color {
+    BLANCO,ROJO,NEGRO,GRIS;
+}
+
+```
+
+
+
+Nuestro renderizador será una subclase de la clase JLabel y vamos a implementar la interfaz ListCellRenderer.
+
+Clase inicial
+
+```java
+
+/**
+ *
+ * @author ecabrerar
+ */
+public class ComboBoxColoresRenderer extends JLabel implements ListCellRenderer{ {
+
+
+ }
+```
+
+
+La interfaz ListCellRenderer nos obliga a implementar el método **getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)**.
+
+
+```java
+
+  public class ComboBoxColoresRenderer extends JLabel implements ListCellRenderer{ {
+
+  @Override
+  public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+  }
+
+ }
+
+``` 
+
+Estos argumentos se pasan al método **getListCellRendererComponent**:
+
+
+* JList list — un objeto de lista utilizado detrás de las escenas para visualizar los elementos. Se puede utilizar los colores de este objeto para configurar los colores frontal y de fondo.
+* Object value — El objeto a renderizar. 
+* int index — indice del objeto a renderizar.
+* boolean isSelected — indica si el objeto a renderizar está seleccionado.
+* boolean cellHasFocus — indica si el objeto a renderizar tiene el foco.
+
+En el construtor especificamos que queremos que esté alieada vertical y horizontalmente hacia la izquierda.
+
+```java
+
+ public ComboBoxColoresRenderer() {
+        setOpaque(true);
+        setHorizontalAlignment(CENTER);
+        setVerticalAlignment(CENTER);
+    }
+
+``` 
+
+Asignaremos el color como fondo siempre que el parámetro **isSelected** sea verdadero
+
+```java
+  if(isSelected){
+        
+          setBackground(getColorFromText(org.diplomado.pucmm.mescyt.Color.valueOf(value.toString())));
+        }
+
+``` 
+Solamente nos resta convertir el texto de la columna en un color, crearemos el siguiente método para tales fines.
+
+```java
+
+ /**
+     * Convertir el valor de la columna en texto a un objeto Color
+     * @param color
+     * @return 
+     */
+    private Color getColorFromText(org.diplomado.pucmm.mescyt.Color color) {
+
+        switch (color) {
+            case BLANCO:
+                return Color.WHITE;
+            case NEGRO:
+                return Color.BLACK;
+            case GRIS:
+                return Color.GRAY;
+            case ROJO:
+                return Color.RED;
+            default:
+                return null;
+        }
+    }
+
+```
+
+Poniendo todo junto
+
+```java
+/**
+ *
+ * @author ecabrerar
+ */
+public class ComboBoxColoresRenderer extends JLabel implements ListCellRenderer{
+
+    public ComboBoxColoresRenderer() {
+        setOpaque(true);
+        setHorizontalAlignment(CENTER);
+        setVerticalAlignment(CENTER);
+    }
+
+    
+    
+    
+    @Override
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+   
+        if(isSelected){
+        
+          setBackground(getColorFromText(org.diplomado.pucmm.mescyt.Color.valueOf(value.toString())));
+        }
+        
+        return this;
+    }
+    
+    
+    /**
+     * Convertir el valor de la columna en texto a un Objeto Color
+     * @param color
+     * @return 
+     */
+    private Color getColorFromText(org.diplomado.pucmm.mescyt.Color color) {
+
+        switch (color) {
+            case BLANCO:
+                return Color.WHITE;
+            case NEGRO:
+                return Color.BLACK;
+            case GRIS:
+                return Color.GRAY;
+            case ROJO:
+                return Color.RED;
+            default:
+                return null;
+        }
+    }
+    
+}
+
+
+```
+Para asignar el renderizador al Combo Box, hacer lo siguiente:
+
+```java
+
+   ComboBoxColoresRenderer colorRenderer = new ComboBoxColoresRenderer();
+   colorRenderer.setPreferredSize(new Dimension(50, 50));
+        
+        cbColor.setRenderer(colorRenderer);
+
+```
+
 Para mayor información sobre el ejemplo anterior descargar abrir el proyecto [javase_swing_jcombobox](javase_swing_jcombobox)
 
