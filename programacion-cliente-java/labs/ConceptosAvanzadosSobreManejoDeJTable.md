@@ -109,4 +109,150 @@ public class ColorTableRenderer extends JLabel implements TableCellRenderer {
 
 ``` 
 
+Nos interesa saber tener la posibilidad de ponerle un border al JLabel, en el constructor recibimos como parámetro un tipo booleano para saber si le colocamos un border o no.
 
+```java
+
+ public ColorTableRenderer(boolean isBordered) {
+        this.isBordered = isBordered;
+        setOpaque(true);
+    }
+
+```
+
+Tenemos que realizar una validación para el parámetro del border.
+
+Si la variable del border es verdadero debemos validar que si tiene un border seleccionado, en caso de no tenerlo, debemos de crear uno.
+Si la variable del border es falso debemos validar que si tiene un border seleccionado, en caso de no tenerlo, debemos de crear uno.
+
+```java
+
+if (isBordered) {
+            if (selectedBorder == null) {
+                selectedBorder = BorderFactory.createMatteBorder(2, 5, 2, 5, table.getSelectionBackground());
+            }
+
+            setBorder(selectedBorder);
+
+        } else {
+            if (unselectedBorder == null) {
+                unselectedBorder = BorderFactory.createMatteBorder(2, 5, 2, 5, table.getBackground());
+            }
+
+            setBorder(unselectedBorder);
+        }
+
+
+```
+
+También queremos mostrar un tool tip cuando el usuario posiciona el mouse encima de la celda del color.
+
+```java
+
+setToolTipText(color.name()); //Tooltip para la columna del color
+
+```
+
+Solamente nos resta convertir el texto de la columna en un color, crearemos el siguiente método para tales fines.
+
+```java
+
+ /**
+     * Convertir el valor de la columna en texto a un objeto Color
+     * @param color
+     * @return 
+     */
+    private Color getColorFromText(org.diplomado.pucmm.mescyt.Color color) {
+
+        switch (color) {
+            case BLANCO:
+                return Color.WHITE;
+            case NEGRO:
+                return Color.BLACK;
+            case GRIS:
+                return Color.GRAY;
+            case ROJO:
+                return Color.RED;
+            default:
+                return null;
+        }
+    }
+
+```
+
+Poniendo todo junto
+
+```java
+public class ColorTableRenderer extends JLabel implements TableCellRenderer {
+
+    Border unselectedBorder = null;
+    Border selectedBorder = null;
+    boolean isBordered = true;
+
+    public ColorTableRenderer(boolean isBordered) {
+        this.isBordered = isBordered;
+        setOpaque(true);
+    }
+
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+
+        
+        org.diplomado.pucmm.mescyt.Color color = org.diplomado.pucmm.mescyt.Color.valueOf(value.toString());
+                
+        setToolTipText(color.name()); //Tooltip para la columna del color
+        
+        setBackground(getColorFromText(color));
+
+        if (isBordered) {
+            if (selectedBorder == null) {
+                selectedBorder = BorderFactory.createMatteBorder(2, 5, 2, 5, table.getSelectionBackground());
+            }
+
+            setBorder(selectedBorder);
+
+        } else {
+            if (unselectedBorder == null) {
+                unselectedBorder = BorderFactory.createMatteBorder(2, 5, 2, 5, table.getBackground());
+            }
+
+            setBorder(unselectedBorder);
+        }
+
+        return this;
+
+    }
+
+    /**
+     * Convertir el valor de la columna en texto a un objeto Color
+     * @param color
+     * @return 
+     */
+    private Color getColorFromText(org.diplomado.pucmm.mescyt.Color color) {
+
+        switch (color) {
+            case BLANCO:
+                return Color.WHITE;
+            case NEGRO:
+                return Color.BLACK;
+            case GRIS:
+                return Color.GRAY;
+            case ROJO:
+                return Color.RED;
+            default:
+                return null;
+        }
+    }
+
+}
+
+```
+
+Para asignar el renderizador a la columna, hacer lo siguiente:
+```java
+ 
+        ColorTableRenderer colorRenderer = new ColorTableRenderer(true);
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(colorRenderer);
+```
+
+El ejemplo completo se encuentra en [javase_swing_jtable](javase_swing_jtable)
