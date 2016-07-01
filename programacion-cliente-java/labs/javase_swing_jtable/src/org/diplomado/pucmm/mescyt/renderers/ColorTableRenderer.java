@@ -31,7 +31,12 @@ public class ColorTableRenderer extends JLabel implements TableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 
-        setBackground(getColorFromText(org.diplomado.pucmm.mescyt.Color.valueOf(value.toString())));
+        
+        org.diplomado.pucmm.mescyt.Color color = org.diplomado.pucmm.mescyt.Color.valueOf(value.toString());
+                
+        setToolTipText(color.name()); //Tooltip para la columna del color
+        
+        setBackground(getColorFromText(color));
 
         if (isBordered) {
             if (selectedBorder == null) {
@@ -53,7 +58,7 @@ public class ColorTableRenderer extends JLabel implements TableCellRenderer {
     }
 
     /**
-     * Convertir el valor de la columna en texto a un Objeto Color
+     * Convertir el valor de la columna en texto a un objeto Color
      * @param color
      * @return 
      */
