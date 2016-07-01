@@ -252,12 +252,13 @@ public class ColorTableRenderer extends JLabel implements TableCellRenderer {
 }
 
 ```
-![image alt text](graphics/renderer_2.png)
+
 Para asignar el renderizador a la columna, hacer lo siguiente:
 ```java
  
         ColorTableRenderer colorRenderer = new ColorTableRenderer(true);
         jTable1.getColumnModel().getColumn(3).setCellRenderer(colorRenderer);
 ```
+![image alt text](graphics/renderer_2.png)
 
 El ejemplo completo se encuentra en [javase_swing_jtable](javase_swing_jtable)
