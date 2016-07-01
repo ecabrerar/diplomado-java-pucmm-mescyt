@@ -79,6 +79,9 @@ public enum Color {
 }
 
 ```
+![image alt text](graphics/renderer_1.png)
+
+
 
 Nuestro renderizador será una subclase de la clase JLabel y vamos a implementar la interfaz TableCellRenderer.
 
@@ -249,7 +252,7 @@ public class ColorTableRenderer extends JLabel implements TableCellRenderer {
 }
 
 ```
-
+![image alt text](graphics/renderer_2.png)
 Para asignar el renderizador a la columna, hacer lo siguiente:
 ```java
  
