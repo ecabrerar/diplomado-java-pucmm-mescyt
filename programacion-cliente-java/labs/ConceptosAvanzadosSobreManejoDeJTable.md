@@ -6,12 +6,14 @@ Otra opción y es la recomendada, es crear nuestro TableModel a partir de la cla
 
 Simplemente necesita invocar uno de los siguientes métodos de la clase **AbstractTableModel**.
 
-|fireTableCellUpdated  | Actualiza una celda en específico|
-|fireTableRowsUpdated  | Actualiza filas en específico|
-|fireTableDataChanged  | Actualiza la tabla completa (Sólamente datos)|
-|fireTableRowsInserted | Nueva fila insertada |
-|fireTableRowsDeleted  | Borrar filas existente |
-|fireTableStructureChanged| Invalidar toda la tabla, los datos y la estructura|
+|||
+|-----------------------|----------------------------------|
+| fireTableCellUpdated  | Actualiza una celda en específico|
+| fireTableRowsUpdated  | Actualiza filas en específico|
+| fireTableDataChanged  | Actualiza la tabla completa (Sólamente datos)|
+| fireTableRowsInserted | Nueva fila insertada |
+| fireTableRowsDeleted  | Borrar filas existente |
+| fireTableStructureChanged | Invalidar toda la tabla, los datos y la estructura|
 
 
 Dentro de un **TableModel** cualquiera podemos sobre escribir el método **setValueAt(Object aValue, int rowIndex, int columnIndex)**
