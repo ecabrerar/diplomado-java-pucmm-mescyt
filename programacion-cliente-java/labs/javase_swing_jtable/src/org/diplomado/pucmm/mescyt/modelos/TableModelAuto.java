@@ -18,9 +18,9 @@ import org.diplomado.pucmm.mescyt.Marca;
  */
 public class TableModelAuto extends AbstractTableModel {
 
-    private String[] columnas = {"Modelo", "Marca", "Año", "Color"};
+    private final String[] columnas = {"Modelo", "Marca", "Año", "Color"};
 
-    private List<Auto> data;
+    private final List<Auto> data;
 
     public TableModelAuto() {
 

@@ -12,9 +12,8 @@ import javax.swing.JOptionPane;
 import org.diplomado.pucmm.mescyt.Auto;
 import org.diplomado.pucmm.mescyt.Color;
 import org.diplomado.pucmm.mescyt.Marca;
+import org.diplomado.pucmm.mescyt.modelos.TableModelAutoMejorada;
 import org.diplomado.pucmm.mescyt.renderers.ColorTableRenderer;
-
-
 
 /**
  *
@@ -22,85 +21,88 @@ import org.diplomado.pucmm.mescyt.renderers.ColorTableRenderer;
  */
 public class DgShowRoom extends javax.swing.JDialog {
 
-   private NumberFormat formatoAnio;
-   
-   private int valorAnio = 0;
+    private NumberFormat formatoAnio;
+
+    private int valorAnio = 0;
+
     /**
      * Creates new form DgAutoShowRoom
      */
     public DgShowRoom(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        
+
         inicializarFormatos();
-        
+
         initComponents();
-        
+
         initTableModel();
-        
+
         initComboMarca();
         initComboColor();
     }
-    
-    private void initTableModel(){
-        jTable1.setModel(new TableModelAuto());
+
+    private void initTableModel() {
+        jTable1.setModel(new TableModelAutoMejorada());
         //jTable1.setColumnSelectionAllowed(true); //Permitir seleccionar columna
         //jTable1.setColumnSelectionInterval(0, 0); //Seleccionar columna
-        
+
         jTable1.setRowSelectionAllowed(true);  //Permitir seleccionar fila
-        jTable1.setRowSelectionInterval(0, 0); //seleccionar fila
+
+        if (jTable1.getRowCount() > 1) {
+            jTable1.setRowSelectionInterval(0, 0); //seleccionar fila
+        }
         
         ColorTableRenderer colorRenderer = new ColorTableRenderer(true);
         jTable1.getColumnModel().getColumn(3).setCellRenderer(colorRenderer);
     }
-    
-    private void initComboMarca(){
+
+    private void initComboMarca() {
         cbMarca.setModel(new DefaultComboBoxModel(Marca.values()));
         cbMarca.setSelectedIndex(-1);
     }
-    
-    private void initComboColor(){
-        
+
+    private void initComboColor() {
+
         DefaultComboBoxModel<String> dmodel = new DefaultComboBoxModel<>();
-        
-        for (Color c  : Color.values()) {
+
+        for (Color c : Color.values()) {
             dmodel.addElement(c.name());
         }
-        
+
         cbColor.setModel(dmodel);
-        
+
     }
-    
-    private void inicializarFormatos(){
+
+    private void inicializarFormatos() {
         formatoAnio = NumberFormat.getInstance();
     }
-    
-    private void limpiarComponentes(){
+
+    private void limpiarComponentes() {
         txtModelo.setText(null);
         txtAnio.setValue(0);
         cbMarca.setSelectedIndex(-1);
         cbColor.setSelectedIndex(-1);
     }
-    
-    private Auto getAutoDesdeComponente(){
-                
+
+    private Auto getAutoDesdeComponente() {
+
         Auto auto = null;
-        
-        if(txtModelo.getText().isEmpty()
+
+        if (txtModelo.getText().isEmpty()
                 || txtAnio.getText().isEmpty()
-                || cbMarca.getSelectedIndex()==-1
-                || cbColor.getSelectedIndex()==-1
-                ){
+                || cbMarca.getSelectedIndex() == -1
+                || cbColor.getSelectedIndex() == -1) {
             JOptionPane.showConfirmDialog(this, "Mensaje del Sistema", "Campos en blanco", JOptionPane.ERROR_MESSAGE);
         } else {
-            
-           Marca marca = Marca.valueOf(String.valueOf(cbMarca.getSelectedItem()));
-           Color color = Color.valueOf(String.valueOf(cbColor.getSelectedItem()));
-            
-           int anio =  ((Long)txtAnio.getValue()).intValue();
-           
-            auto = new Auto(txtModelo.getText(), marca,anio , color);
+
+            Marca marca = Marca.valueOf(String.valueOf(cbMarca.getSelectedItem()));
+            Color color = Color.valueOf(String.valueOf(cbColor.getSelectedItem()));
+
+            int anio = ((Long) txtAnio.getValue()).intValue();
+
+            auto = new Auto(txtModelo.getText(), marca, anio, color);
         }
-        
+
         return auto;
     }
 
@@ -262,23 +264,23 @@ public class DgShowRoom extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
         limpiarComponentes();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
         Auto a = getAutoDesdeComponente();
-        
-        if(a==null){
-            JOptionPane.showMessageDialog(this, 
+
+        if (a == null) {
+            JOptionPane.showMessageDialog(this,
                     "Mensaje", "Revise su codigo", JOptionPane.INFORMATION_MESSAGE);
-        }else {
-          TableModelAuto tmAuto =  (TableModelAuto) jTable1.getModel();
-          
-          tmAuto.setValueAt(a, jTable1.getRowCount(), jTable1.getRowCount());          
-          
+        } else {
+            TableModelAuto tmAuto = (TableModelAuto) jTable1.getModel();
+
+            tmAuto.setValueAt(a, jTable1.getRowCount(), jTable1.getRowCount());
+
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -287,7 +289,9 @@ public class DgShowRoom extends javax.swing.JDialog {
         txtAnio.setValue(null);
     }//GEN-LAST:event_txtAnioFocusGained
 
-    /**J
+    /**
+     * J
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

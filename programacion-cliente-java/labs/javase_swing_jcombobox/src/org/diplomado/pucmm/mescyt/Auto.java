@@ -54,6 +54,13 @@ public class Auto {
 
     public void setColor(Color color) {
         this.color = color;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return modelo;
+    }
+    
+    
     
 }

@@ -20,6 +20,25 @@ import org.diplomado.pucmm.mescyt.java.encapsulados.Usuario;
  * @author ecabrerar
  */
 public class ServicioUsuario {
+    
+    private static final ServicioUsuario INSTANCIA = new ServicioUsuario();
+    
+     private static  ServicioUsuario INSTANCIA_UNICA = null;
+    
+    private ServicioUsuario() {}
+    
+    public static ServicioUsuario getInstancia(){
+        return INSTANCIA;
+    }
+    
+    
+     public static ServicioUsuario getInstanciaUnica(){
+         
+         if(INSTANCIA_UNICA==null){
+             INSTANCIA_UNICA = new ServicioUsuario();
+         }
+        return INSTANCIA_UNICA;
+    }
 
     public void salvar(Usuario usuario) {
 
@@ -91,6 +110,11 @@ public class ServicioUsuario {
         }
 
         return lista;
+    }
+    
+    public Usuario consultarPorId(){
+        
+        return null;
     }
     
     

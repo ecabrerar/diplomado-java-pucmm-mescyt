@@ -12,4 +12,4 @@
 	* [Consulta Básica Usando JDBC y DerbyDB](ConsultaBasicaUsandoJDBCyDerbyDB.doc.md)
 * [Hilos](Hilos.md)
 * [Introducción Patrones Diseños](IntroPatronesDisenos.md)
- 
+* [Recomendaciones Generales](RecomendacionesGenerales.md)

@@ -12,6 +12,7 @@ import org.diplomado.pucmm.mescyt.Auto;
 import org.diplomado.pucmm.mescyt.Color;
 import org.diplomado.pucmm.mescyt.Marca;
 import org.diplomado.pucmm.mescyt.modelos.ComboModelAuto;
+import org.diplomado.pucmm.mescyt.modelos.ComboModelAutoMejorado;
 import org.diplomado.pucmm.mescyt.renderers.ComboBoxColoresRenderer;
 
 /**
@@ -57,7 +58,7 @@ public class DgShowRoom extends javax.swing.JDialog {
     }
 
     private void initComboAuto() {
-        cbAuto.setModel(new ComboModelAuto());
+        cbAuto.setModel(new ComboModelAutoMejorado());
         cbAuto.setSelectedIndex(-1);
     }
 
@@ -210,7 +211,7 @@ public class DgShowRoom extends javax.swing.JDialog {
 
         int index = cbAuto.getSelectedIndex();
         
-        Auto auto = ((ComboModelAuto) cbAuto.getModel()).getData(index);
+        Auto auto = ((ComboModelAutoMejorado) cbAuto.getModel()).getData(index);
 
        txtAnio.setValue(auto.getAnio());
        txtModelo.setText(auto.getModelo());
