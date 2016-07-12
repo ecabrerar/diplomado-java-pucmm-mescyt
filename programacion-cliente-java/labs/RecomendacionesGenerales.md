@@ -95,14 +95,15 @@ Usando el try de esa forma nos aseguramos de que el recurso quede cerrado luego 
 Escribimos código para que lo puedan leer otras personas, no sólo para que lo traduzca el compilador. 
 
 Por tal motivo debemos seguir las recomendaciones de buenas prácticas
-|Nombre|Convención|
-|-----------------------|----------------------------------|
-| Nombre de clase  | Debe comenzar con letra mayúscula y ser un sustantivo, por ejemplo, Carro , Color, Boton, Sistema, Hilo, etc.|
-| Nombre de interfaz  | Debe comenzar con letra mayúscula y ser un adjetivo, por ejemplo, Runnable, Remote, ActionListener, etc.|
-| Nombre de método  | Debe comenzar con letra minúscula y ser un verbo, por ejemplo, actionPerformed (), main(), print (), println (), etc.|
+
+| Nombre | Convención |
+| ------ | ----------- |
+| Nombre de clase | Debe comenzar con letra mayúscula y ser un sustantivo, por ejemplo, Carro , Color, Boton, Sistema, Hilo, etc. |
+| Nombre de interfaz | Debe comenzar con letra mayúscula y ser un adjetivo, por ejemplo, Runnable, Remote, ActionListener, etc. |
+| Nombre de método | Debe comenzar con letra minúscula y ser un verbo, por ejemplo, actionPerformed (), main(), print (), println (), etc. |
 | Nombre de variable | Debe comenzar con letra minúscula, por ejemplo, primerNombre, codPais, etc. |
-| nombre de paquete  | Debe estar en letra minúscula, por ejemplo,java, lang, sql, util etc|
-| Nombre de constantes |Debe estar en letra mayúscula. p.ej. ROJO, AMARILLO, MAX_PRIORITY, etc|
+| Nombre de paquete | Debe estar en letra minúscula, por ejemplo,java, lang, sql, util etc |
+| Nombre de constantes | Debe estar en letra mayúscula. por ejemplo, ROJO, AMARILLO, MAX_PRIORITY, etc |
 
 
 **Comentarios descriptivos:** 
@@ -110,6 +111,7 @@ Los comentarios deben comunicar algo. Jamás se utilizarán para *parafrasear* e
 que es obvio. 
 
 * Control de Acceso 
+
 Asegurarse que las variables y métodos tengan especificado el control de acceso correcto. 
 
 * Crear clase con elementos comunes y heredar en clases específicas.
