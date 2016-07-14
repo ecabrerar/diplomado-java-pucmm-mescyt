@@ -20,6 +20,9 @@
 * [W3Schools HTML Tutorial](http://www.w3schools.com/html/html_examples.asp)
 * [W3Schools CSS Tutorial](http://www.w3schools.com/css/default.asp)
 * [W3Schools Bootstrap 3 Tutorial](http://www.w3schools.com/bootstrap/default.asp)
+* [Introduction to Java Web development](http://www.vogella.com/tutorials/JavaWebTerminology/article.html)
+* [Servlet](http://tutorials.jenkov.com/java-servlets/overview.html)
+
 
 ### Presentaciones
 * [Primeros pasos con Maven ](http://www.slideshare.net/eudris/primeros-pasos-con-maven)
