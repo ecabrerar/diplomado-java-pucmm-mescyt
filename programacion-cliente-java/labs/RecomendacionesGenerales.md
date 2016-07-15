@@ -3,7 +3,8 @@
 A continuación un listado de reglas básicas que debemos seguir cuando estamos desarrollando una aplicación cliente servidor en Java.
 
 * Validación de entrada de datos
-  Nuestra aplicación debe ser capaz de detectar posibles errores por parte del usuario a la hora de proceder a llenar cualquier formulario. Validando los datos que son obligatorios nos aseguramos que nuestra aplicación no colapse al momento de experimentar una entrada de dato errónea.
+  
+Nuestra aplicación debe ser capaz de detectar posibles errores por parte del usuario a la hora de proceder a llenar cualquier formulario. Validando los datos que son obligatorios nos aseguramos que nuestra aplicación no colapse al momento de experimentar una entrada de dato errónea.
 
 ```java
 
@@ -33,6 +34,7 @@ Además de validar la entrada de datos, debemos realizar validaciones antes de h
 ```
 
 * Informar al usuario cuando ocurre una entrada de datos incorrecta o un error en la aplicación.
+
 El usuario debe siempre estar informado de lo que pasa en la aplicación. Mostrar mensajes de alerta siempre es una buena práctica.
 
 ```java
@@ -89,9 +91,11 @@ Ejemplo:
 
 
 ```
-Usando el try de esa forma nos aseguramos de que el recurso quede cerrado luego de su uso. Esto es posible a que las clases anteriores implementa la interfaz **AutoClosable**. Se podrá utilizar **try-with-resources** siempre que implementen la **AutoClosable**.
+Usando el try de esa forma nos aseguramos de que el recurso quede cerrado luego de su uso.
+Esto es posible a que las clases anteriores implementa la interfaz **AutoClosable**. Se podrá utilizar **try-with-resources** siempre que implementen la **AutoClosable**.
 
 * Cuestiones de Estilo
+
 Escribimos código para que lo puedan leer otras personas, no sólo para que lo traduzca el compilador. 
 
 Por tal motivo debemos seguir las recomendaciones de buenas prácticas
@@ -320,6 +324,7 @@ public class ComboModelAutoMejorado extends ComboBoxModelStandard<Auto>{
 Los ejemplos anteriores pueden encontrarlo en los proyectos [javase_swing_jtable](javase_swing_jtable) y [javase_swing_jcombobox](javase_swing_jcombobox).
 
 * Separar en clases diferentes los métodos que tienen que ver con interacción con la base de datos. 
+
 Yo recomiendo un mínimo de 4 métodos por clases.
 
 Ejemplo:
@@ -349,6 +354,7 @@ public class ServicioUsuario {
 ```
 
 * Usar el patrón singleton (instancia única) para instanciar nuestras clases.
+
 Crear nuevos objetos cada vez que vamos a crear una clase nueva puede resultar en un alto consumo de memoria.
 
 Es recomendable crear una instancia única al momento de crear un objeto.
