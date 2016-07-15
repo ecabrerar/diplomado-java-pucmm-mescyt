@@ -20,23 +20,23 @@ import org.diplomado.pucmm.mescyt.java.encapsulados.Usuario;
  * @author ecabrerar
  */
 public class ServicioUsuario {
-    
+
     private static final ServicioUsuario INSTANCIA = new ServicioUsuario();
-    
-     private static  ServicioUsuario INSTANCIA_UNICA = null;
-    
-    private ServicioUsuario() {}
-    
-    public static ServicioUsuario getInstancia(){
+
+    private static ServicioUsuario INSTANCIA_UNICA = null;
+
+    private ServicioUsuario() {
+    }
+
+    public static ServicioUsuario getInstancia() {
         return INSTANCIA;
     }
-    
-    
-     public static ServicioUsuario getInstanciaUnica(){
-         
-         if(INSTANCIA_UNICA==null){
-             INSTANCIA_UNICA = new ServicioUsuario();
-         }
+
+    public static ServicioUsuario getInstanciaUnica() {
+
+        if (INSTANCIA_UNICA == null) {
+            INSTANCIA_UNICA = new ServicioUsuario();
+        }
         return INSTANCIA_UNICA;
     }
 
@@ -82,40 +82,67 @@ public class ServicioUsuario {
     public List<Usuario> consultarTodos() {
 
         String sqlConsulta = "SELECT * FROM usuario ORDER BY codigo asc";
-        
+
         List<Usuario> lista = new ArrayList<>();
 
         try (Connection con = ConeccionDB.getInstancia().getConeccion()) {
 
             try (PreparedStatement stmt = con.prepareStatement(sqlConsulta)) {
-               try(ResultSet rs = stmt.executeQuery()){
-                   
-                   while(rs.next()){
-                       
-                       Usuario usuario = new Usuario();
-                       usuario.setCodigo(rs.getInt(1));
-                       usuario.setNombre(rs.getString(2));
-                       usuario.setApellido(rs.getString("apellido"));
-                       usuario.setUsuario(rs.getString("usuario"));
-                       usuario.setClave(rs.getString(5));
-                       
-                       lista.add(usuario);
-                               
-                   }
-               }
+                try (ResultSet rs = stmt.executeQuery()) {
+
+                    while (rs.next()) {
+
+                        Usuario usuario = new Usuario();
+                        usuario.setCodigo(rs.getInt(1));
+                        usuario.setNombre(rs.getString(2));
+                        usuario.setApellido(rs.getString("apellido"));
+                        usuario.setUsuario(rs.getString("usuario"));
+                        usuario.setClave(rs.getString(5));
+
+                        lista.add(usuario);
+
+                    }
+                }
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ServicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return lista;
     }
-    
-    public Usuario consultarPorId(){
-        
-        return null;
+
+    public Usuario consultarPorId(int id) {
+
+        String sqlConsulta = "SELECT * FROM usuario where id=?";
+
+        Usuario usuario = null;
+
+        try (Connection con = ConeccionDB.getInstancia().getConeccion()) {
+
+            try (PreparedStatement stmt = con.prepareStatement(sqlConsulta)) {
+                stmt.setInt(1, id);
+
+                try (ResultSet rs = stmt.executeQuery()) {
+
+                    if (rs.next()) {
+
+                        usuario = new Usuario();
+                        usuario.setCodigo(rs.getInt(1));
+                        usuario.setNombre(rs.getString(2));
+                        usuario.setApellido(rs.getString("apellido"));
+                        usuario.setUsuario(rs.getString("usuario"));
+                        usuario.setClave(rs.getString(5));
+
+                    }
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return usuario;
     }
-    
-    
+
 }
