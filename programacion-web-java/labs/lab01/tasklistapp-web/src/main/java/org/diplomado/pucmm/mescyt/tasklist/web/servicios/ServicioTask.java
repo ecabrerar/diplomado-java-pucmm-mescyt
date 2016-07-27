@@ -26,11 +26,10 @@ import org.diplomado.pucmm.mescyt.taskapp.web.utilidades.TaskAppException;
 public class ServicioTask extends ServicioPersistenciaBase {
 
     public List<Task> consultarTodas() throws TaskAppException {
-        
-        
-        Function<ResultSet,Task> function = (ResultSet rs) -> {
+
+        Function<ResultSet, Task> function = (ResultSet rs) -> {
             Task task = new Task();
-            
+
             try {
 
                 task.setId(rs.getInt("id"));
@@ -42,40 +41,35 @@ public class ServicioTask extends ServicioPersistenciaBase {
             } catch (SQLException ex) {
                 Logger.getLogger(ServicioTask.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             return task;
 
         };
 
-      return  consultarTodas("select * from task order by id asc",function);
+        return consultarTodas("select * from task order by id asc", function);
 
-       
     }
 
-    public Optional<Task> consultarTaskPorId(int id) {
+    public Optional<Task> consultarTaskPorId(int id) throws TaskAppException {
 
-        Optional<Task> opEntidad;
-
-        try (ResultSet rs = consultarPorId("select * from task where id=?", id)) {
-
-            rs.next();
-
+        Function<ResultSet, Task> function = (ResultSet rs) -> {
             Task task = new Task();
-            task.setId(rs.getInt("id"));
-            task.setDescripcion(rs.getString("descripcion"));
-            task.setNombre(rs.getString("nombre"));
-            task.setPrioridad(rs.getString("prioridad"));
-            task.setFinalizado(rs.getBoolean("finalizado"));
 
-            opEntidad = Optional.of(task);
+            try {
+                task.setId(rs.getInt("id"));
+                task.setDescripcion(rs.getString("descripcion"));
+                task.setNombre(rs.getString("nombre"));
+                task.setPrioridad(rs.getString("prioridad"));
+                task.setFinalizado(rs.getBoolean("finalizado"));
 
-        } catch (SQLException | TaskAppException ex) {
-            Logger.getLogger(getClass().getName()).info(MessageFormat.format("Error en el SQl{0}", ex.getMessage()));
+            } catch (SQLException ex) {
+                Logger.getLogger(ServicioTask.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return task;
+        };
 
-            opEntidad = Optional.empty();
-        }
+        return consultarPorId("select * from task where id=?", id, function);
 
-        return opEntidad;
     }
 
     public boolean borrarTask(int id) {
@@ -87,56 +81,113 @@ public class ServicioTask extends ServicioPersistenciaBase {
         } catch (TaskAppException ex) {
             Logger.getLogger(ServicioTask.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return estado;
 
     }
-    
-    
-    public boolean guardarTask(Task task){
-        
+
+    public boolean guardarTask(Task task) {
+
         boolean estado = true;
-        
-        try(Connection con = getConeccion()){
-            
-            try(PreparedStatement stmt = con.prepareStatement("")){
+
+        try (Connection con = getConeccion()) {
+
+            try (PreparedStatement stmt = con.prepareStatement("")) {
                 stmt.setString(1, task.getNombre());
                 stmt.setString(2, task.getDescripcion());
                 stmt.setString(3, task.getPrioridad());
-                
+
                 estado = actualizarRegistro(stmt);
-            } 
-            
+            }
+
         } catch (SQLException | TaskAppException ex) {
             Logger.getLogger(ServicioTask.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return estado;
-        
+
     }
-    
-    
-    public boolean modificarTask(Task task){
-        
+
+    public boolean modificarTask(Task task) {
+
         boolean estado = true;
-        
-        try(Connection con = getConeccion()){
-            
-            try(PreparedStatement stmt = con.prepareStatement("")){
+
+        try (Connection con = getConeccion()) {
+
+            try (PreparedStatement stmt = con.prepareStatement("")) {
                 stmt.setString(1, task.getNombre());
                 stmt.setString(2, task.getDescripcion());
                 stmt.setString(3, task.getPrioridad());
                 stmt.setBoolean(4, task.isFinalizado());
                 stmt.setInt(5, task.getId());
-                
+
                 estado = actualizarRegistro(stmt);
-            } 
-            
+            }
+
         } catch (SQLException | TaskAppException ex) {
             Logger.getLogger(ServicioTask.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return estado;
+
+    }
+
+    public List<Task> getTodas() {
+
+        Function<ResultSet, Task> transformar = new Function<ResultSet, Task>() {
+
+            @Override
+            public Task apply(ResultSet rs) {
+
+                Task task = new Task();
+
+                try {
+                    task.setId(rs.getInt("id"));
+                    task.setDescripcion(rs.getString("descripcion"));
+                    task.setNombre(rs.getString("nombre"));
+                    task.setPrioridad(rs.getString("prioridad"));
+                    task.setFinalizado(rs.getBoolean("finalidado"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ServicioTask.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                return task;
+
+            }
+        };
+
+        return consultarTodasN("select * from task order by id desc", transformar);
+
+    }
+    
+    
+    public List<Task> getTaskListAll(){
         
+         List<Task> lista = new ArrayList<>();
+         
+         try(Connection con = getConeccion()){
+             
+             try(PreparedStatement stmt = con.prepareStatement("select * from task order by id desc")){
+                 try(ResultSet rs = stmt.executeQuery()){
+                     while(rs.next()){
+                            
+                         Task task = new Task();
+                    task.setId(rs.getInt("id"));
+                    task.setDescripcion(rs.getString("descripcion"));
+                    task.setNombre(rs.getString("nombre"));
+                    task.setPrioridad(rs.getString("prioridad"));
+                    task.setFinalizado(rs.getBoolean("finalizado"));
+    
+                    
+                    lista.add(task);
+                     }
+                 }
+             }
+                 
+         } catch (SQLException | TaskAppException ex) {
+            Logger.getLogger(ServicioTask.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lista;
     }
 }

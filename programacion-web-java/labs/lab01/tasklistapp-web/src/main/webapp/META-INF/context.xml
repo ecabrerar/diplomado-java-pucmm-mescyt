@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/taskapp-web">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" global="jdbc/TaskApp" maxActive="100" maxIdle="20" maxWait="10000" minIdle="5" name="jdbc/TaskApp" password="rootweb" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/taskapp_diplomado" username="root"/>
+</Context>

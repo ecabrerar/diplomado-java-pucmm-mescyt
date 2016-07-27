@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,20 +71,27 @@ public class ServicioPersistenciaBase {
         return list;
     }
 
-    protected ResultSet consultarPorId(String sql, Integer idEntidad) throws TaskAppException {
+    protected <T> Optional<T> consultarPorId(String sql, Integer idEntidad,Function<ResultSet,T> function) throws TaskAppException {
 
+        Optional<T> opEntidad = Optional.empty();        
+        
         try (Connection con = getConeccion()) {
 
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
                 stmt.setInt(1, idEntidad);
 
-                return stmt.executeQuery();
+                try(ResultSet rs = stmt.executeQuery()){
+                    
+                   opEntidad = Optional.of(function.apply(rs));
+                }
 
             }
         } catch (SQLException | TaskAppException ex) {
             Logger.getLogger(ServicioPersistenciaBase.class.getName()).info(MessageFormat.format("Error en el SQl{0}", ex.getMessage()));
             throw new TaskAppException(ex);
         }
+        
+        return opEntidad;
 
     }
     
@@ -114,5 +122,30 @@ public class ServicioPersistenciaBase {
             throw new TaskAppException(ex);
         }
     }
+     
+     public <T> List<T> consultarTodasN(String sql, Function<ResultSet,T> transformar){
+         
+         List<T> list = new ArrayList<>();
+         
+         try(Connection con = getConeccion()){
+             
+             try(PreparedStatement stmt = con.prepareStatement(sql)){
+                 
+                 try(ResultSet rs = stmt.executeQuery()){
+                     while(rs.next()){
+                         list.add(transformar.apply(rs));
+                     }
+                 }
+                 
+             }
+             
+         } catch (SQLException | TaskAppException ex) {
+            Logger.getLogger(ServicioPersistenciaBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         return list;
+         
+     }
+     
 
 }
