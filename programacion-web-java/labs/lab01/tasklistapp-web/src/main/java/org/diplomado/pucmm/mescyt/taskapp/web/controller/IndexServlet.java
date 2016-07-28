@@ -6,7 +6,6 @@
 package org.diplomado.pucmm.mescyt.taskapp.web.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -46,7 +45,7 @@ public class IndexServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.setAttribute("task_list", servicioTask.getTaskListAll());
+        request.setAttribute("task_list", servicioTask.consultarTaskTodas());
         
         ServletContext servletContext = request.getServletContext();
         

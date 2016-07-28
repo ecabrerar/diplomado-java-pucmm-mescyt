@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -113,7 +112,7 @@ public class TaskWebAppServlet extends HttpServlet {
                 break;
             case "all":
             default:
-                taskList = servicioTask.consultarTodas();
+                taskList = servicioTask.consultarTaskTodas();
                 filter = "all";
         }
 

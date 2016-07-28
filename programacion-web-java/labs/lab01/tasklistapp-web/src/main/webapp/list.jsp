@@ -26,7 +26,7 @@
             </tr>
             <%
                ServicioTask servicioTask = new ServicioTask();
-               List<Task> lista = servicioTask.getTaskListAll();
+               List<Task> lista = servicioTask.consultarTaskTodas();
                
                for(Task t : lista){
              %>
