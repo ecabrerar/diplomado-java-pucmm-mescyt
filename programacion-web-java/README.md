@@ -30,3 +30,5 @@
 * [Html5, Rest, JSON, Angular JS y Java EE 7 - Aplicaciones Web Modernas y Escalables ](http://www.slideshare.net/eudris/html5-rest-json-angular-js-y-java-ee-7-aplicaciones-web-modernas-y-escalables)
 * [Introducción a Java EE 7 & HTML 5](http://www.slideshare.net/eudris/introduccin-a-java-ee-7-html5)
 * [Introducción a Java EE 7 ](http://www.slideshare.net/eudris/introduccin-a-java-ee-7-36661959)
+* [Taller introducción Java EE 7 @UAPA](http://www.slideshare.net/eudris/taller-introduccin-java-ee-7-uapa) 
+* [Manejadores de persistencia](http://www.slideshare.net/eudris/manejadores-de-persistencia-19819292) 
