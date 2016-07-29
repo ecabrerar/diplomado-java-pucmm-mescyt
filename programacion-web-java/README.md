@@ -10,6 +10,8 @@
 * [Primeros Pasos con Maven (BarCampSTI2013-Maven)](https://github.com/ecabrerar/BarCampSTI2013-Maven) 
 * [Desarrollo Web Java (Taller UASD)] (https://github.com/ecabrerar/taller-desarrollo-web-java)
 * [Desarrollo Web Java (Diplomado Java - Curso Final UAPA)](https://github.com/uniabierta-cursofinal/programacion-web-java)
+* [JSTL (JavaServer pages Standard Tag Library)](recursos/JSTL.md)
+
 
 ### Libros
 * [Maven: The Complete Reference](http://books.sonatype.com/mvnref-book/reference/)
