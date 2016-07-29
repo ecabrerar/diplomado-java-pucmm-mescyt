@@ -20,7 +20,7 @@ http://java.sun.com/jsp/jstl/sql
 
 Las expresiones se indican de la forma **${expresion}**.
 
-**Librería ****core****.**
+**Librería**  __**core**__
 
 En las páginas que la usen debemos incluir la siguiente directiva:
 
@@ -103,7 +103,7 @@ Parámetro 'nombre' no definido.
 
 </c:choose>
 ```
-**forEach y forTokens **** ** 
+**forEach y forTokens** 
 
 **forEach** consta de los siguientes atributos:
 
@@ -189,7 +189,7 @@ Ejemplo:
 
 </c:if>
 ```
-**Control de errores con ****catch**
+**Control de errores con** __**catch**__
 
 Con **<c:catch>** podemos capturar excepciones, sin que se aborte la ejecución de la página al
 
@@ -209,7 +209,7 @@ Se produjo un error: ${error01}
 
 </c:if>
 ```
-**Librería ****formatting**
+**Librería** __**formatting**__
 
 Contiene etiquetas que realizan diversas funciones relacionadas con formato y localización,
 
