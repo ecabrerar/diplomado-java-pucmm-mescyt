@@ -6,3 +6,4 @@
 * [Glosario de Términos Relacionados a Java](java-glosario.pdf){:target="_blank"}
 * [Manejo de Excepciones en Java](ManejodeExcepcionesenJava.pdf){:target="_blank"}
 * [Programación Orientada a Objetos en Java ](POOenJava.pdf){:target="_blank"}
+* [Recomendaciones Generales](RecomendacionesGenerales.md)

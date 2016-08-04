@@ -1,6 +1,6 @@
 **Introducción a Patrones de Diseño**
 
-Los patrones de diseño **(design patterns) **son la base para la búsqueda de soluciones a problemas comunes en el desarrollo de software y otros ámbitos referentes al diseño de interacción o interfaces.
+Los patrones de diseño **(design patterns)** son la base para la búsqueda de soluciones a problemas comunes en el desarrollo de software y otros ámbitos referentes al diseño de interacción o interfaces.
 
 Un patrón de diseño es una solución a un problema de diseño. Para que una solución sea considerada un patrón debe poseer ciertas características. 
 
@@ -20,7 +20,7 @@ Un patrón define una posible solución correcta para un problema de diseño den
 
 Más tarde, en **1987**, **Ward Cunningham **y **Kent Beck** usaron varias ideas de **Alexander** para desarrollar cinco patrones de interacción hombre-ordenador (HCI) y publicaron un artículo en OOPSLA-87 titulado **Using Pattern Languages for OO Programs**.
 
-No obstante, no fue hasta principios de los 90’s cuando los patrones de diseño tuvieron un gran éxito en el mundo de la informática a partir de la publicación del libro **Design Patterns** escrito por el grupo** Gang of Four (GoF)** compuesto por **Erich Gamma**, **Richard Helm, Ralph Johnson** y **John Vlisides**, en el que se recogían 23 patrones diseño comunes.
+No obstante, no fue hasta principios de los 90’s cuando los patrones de diseño tuvieron un gran éxito en el mundo de la informática a partir de la publicación del libro **Design Patterns** escrito por el grupo **Gang of Four (GoF)** compuesto por **Erich Gamma**, **Richard Helm, Ralph Johnson** y **John Vlisides**, en el que se recogían 23 patrones diseño comunes.
 
 ## **Objetivos de los patrones**
 
@@ -66,7 +66,7 @@ La plantilla más común es la utilizada precisamente por el **GoF** y consta de
 
 * **Nombre del patrón:** nombre estándar del patrón por el cual será reconocido en la comunidad (normalmente se expresan en inglés).
 
-* **Clasificación del patrón: **creacional, estructural o de comportamiento.
+* **Clasificación del patrón:** creacional, estructural o de comportamiento.
 
 * **Intención:** ¿Qué problema pretende resolver el patrón? También conocido como: Otros nombres de uso común para el patrón.
 
@@ -74,7 +74,7 @@ La plantilla más común es la utilizada precisamente por el **GoF** y consta de
 
 * **Aplicabilidad:** Usos comunes y criterios de aplicabilidad del patrón.
 
-* **Estructura: **Diagramas de clases oportunos para describir las clases que intervienen en el patrón.
+* **Estructura:** Diagramas de clases oportunos para describir las clases que intervienen en el patrón.
 
 * **Participantes:** Enumeración y descripción de las entidades abstractas (y sus roles) que participan en el patrón.
 
@@ -82,7 +82,7 @@ La plantilla más común es la utilizada precisamente por el **GoF** y consta de
 
 * **Consecuencias:** Consecuencias positivas y negativas en el diseño derivadas de la aplicación del patrón.
 
-* **Implementación: **Técnicas o comentarios oportunos de cara a la implementación del patrón.
+* **Implementación:**  Técnicas o comentarios oportunos de cara a la implementación del patrón.
 
 * **Código de ejemplo:** Código fuente ejemplo de implementación del patrón.
 
@@ -104,9 +104,9 @@ Muchos sistemas informáticos utilizan un Sistema de Gestión de Base de Datos p
 
 **Controlador**: Este responde a eventos, usualmente acciones del usuario e invoca cambios en el modelo y probablemente en la vista.
 
-** Patrón Singleton**
+**Patrón Singleton**
 
-**Singleton (instancia única) **está diseñado para restringir la creación de objetos pertenecientes a una clase o el valor de un tipo a un único objeto.
+**Singleton (instancia única)** está diseñado para restringir la creación de objetos pertenecientes a una clase o el valor de un tipo a un único objeto.
 
 Su intención consiste en garantizar que una clase sólo tenga una instancia y proporcionar un punto de acceso global a ella.
 
