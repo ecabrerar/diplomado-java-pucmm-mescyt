@@ -4,7 +4,7 @@ Muchas veces queremos pasar información de una ventana a otra usando Java Swing
 
 Es probable que existan varias formas de realizar tal operación, pero voy a enfocarme en una solución probado y conocida ampliamente en el desarrollo de software.
 
-Me refiero a la utilización de un patrón de diseño llamado **_ Patrón Observer (Observador). _**. Este patrón proporciona a los componentes una forma flexible de enviar mensajes de difusión a los receptores interesados.
+Me refiero a la utilización de un patrón de diseño llamado **_Patrón Observer (Observador)_**. Este patrón proporciona a los componentes una forma flexible de enviar mensajes de difusión a los receptores interesados.
 
 En clase anteriores hicimos referencia a los [Patrones Diseños](IntroPatronesDisenos.md) como la base para la búsqueda de soluciones a problemas comunes en el desarrollo de software y otros ámbitos referentes al diseño de interacción o interfaces.
 
@@ -66,7 +66,7 @@ Los elementos que participan en este patrón son los siguientes:
 
 En el ejemplo [javase_swing_jtable](javase_swing_jtable) hicimos la implementación del patrón observador.
 
-Primeramente creamos una interfaz llamado **ISubject **que representa al sujeto. Esta Interfaz define cómo pueden interactuar los observadores con el sujeto. Define métodos para añadir y quitar observadores y avisarles de que se han producido cambios en el sujeto.
+Primeramente creamos una interfaz llamado **ISubject** que representa al sujeto. Esta Interfaz define cómo pueden interactuar los observadores con el sujeto. Define métodos para añadir y quitar observadores y avisarles de que se han producido cambios en el sujeto.
 ```java
 public interface ISubject {
 
@@ -80,7 +80,7 @@ public interface ISubject {
 
 }
 ```
-Luego definimos la interfaz **IObserver,** la cual usaremos para actualizar los objetos ante cambios en un sujeto.
+Luego definimos la interfaz **IObserver**, la cual usaremos para actualizar los objetos ante cambios en un sujeto.
 ```java
 public interface IObserver {
 
@@ -88,7 +88,7 @@ public interface IObserver {
 
 }
 ```
-Implementamos la interfaz **ISubject ** en el formulario **DgAddCar** que captura los datos de un carro y lo enviará al observador que será representado por el formulario **DgShowRoom.**
+Implementamos la interfaz **ISubject** en el formulario **DgAddCar** que captura los datos de un carro y lo enviará al observador que será representado por el formulario **DgShowRoom.**
 ```java
 public class DgAddCar extends javax.swing.JDialog implements ISubject{
 
@@ -193,3 +193,4 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
 ```
 Es importante analizar cuidadosamente la función de los métodos **update** y **notify.**
 
+Para mayor información sobre el ejemplo anterior descargar y abrir el proyecto  [javase_swing_jtable](javase_swing_jtable)
