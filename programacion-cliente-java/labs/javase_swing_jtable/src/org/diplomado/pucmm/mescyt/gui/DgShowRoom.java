@@ -5,25 +5,20 @@
  */
 package org.diplomado.pucmm.mescyt.gui;
 
-import org.diplomado.pucmm.mescyt.modelos.TableModelAuto;
-import java.text.NumberFormat;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.diplomado.pucmm.mescyt.Auto;
-import org.diplomado.pucmm.mescyt.Color;
-import org.diplomado.pucmm.mescyt.Marca;
-import org.diplomado.pucmm.mescyt.modelos.TableModelAutoMejorada;
+import org.diplomado.pucmm.mescyt.modelos.TableModelAuto;
 import org.diplomado.pucmm.mescyt.renderers.ColorTableRenderer;
+import org.diplomado.pucmm.mescyt.utilidades.IObserver;
 
 /**
  *
  * @author ecabrerar
  */
-public class DgShowRoom extends javax.swing.JDialog {
+public class DgShowRoom extends javax.swing.JDialog implements IObserver{
 
-    private NumberFormat formatoAnio;
 
-    private int valorAnio = 0;
 
     /**
      * Creates new form DgAutoShowRoom
@@ -31,18 +26,15 @@ public class DgShowRoom extends javax.swing.JDialog {
     public DgShowRoom(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
 
-        inicializarFormatos();
-
         initComponents();
 
         initTableModel();
 
-        initComboMarca();
-        initComboColor();
+
     }
 
     private void initTableModel() {
-        jTable1.setModel(new TableModelAutoMejorada());
+        jTable1.setModel(new TableModelAuto());
         //jTable1.setColumnSelectionAllowed(true); //Permitir seleccionar columna
         //jTable1.setColumnSelectionInterval(0, 0); //Seleccionar columna
 
@@ -56,56 +48,9 @@ public class DgShowRoom extends javax.swing.JDialog {
         jTable1.getColumnModel().getColumn(3).setCellRenderer(colorRenderer);
     }
 
-    private void initComboMarca() {
-        cbMarca.setModel(new DefaultComboBoxModel(Marca.values()));
-        cbMarca.setSelectedIndex(-1);
-    }
+    
 
-    private void initComboColor() {
-
-        DefaultComboBoxModel<String> dmodel = new DefaultComboBoxModel<>();
-
-        for (Color c : Color.values()) {
-            dmodel.addElement(c.name());
-        }
-
-        cbColor.setModel(dmodel);
-
-    }
-
-    private void inicializarFormatos() {
-        formatoAnio = NumberFormat.getInstance();
-    }
-
-    private void limpiarComponentes() {
-        txtModelo.setText(null);
-        txtAnio.setValue(0);
-        cbMarca.setSelectedIndex(-1);
-        cbColor.setSelectedIndex(-1);
-    }
-
-    private Auto getAutoDesdeComponente() {
-
-        Auto auto = null;
-
-        if (txtModelo.getText().isEmpty()
-                || txtAnio.getText().isEmpty()
-                || cbMarca.getSelectedIndex() == -1
-                || cbColor.getSelectedIndex() == -1) {
-            JOptionPane.showConfirmDialog(this, "Mensaje del Sistema", "Campos en blanco", JOptionPane.ERROR_MESSAGE);
-        } else {
-
-            Marca marca = Marca.valueOf(String.valueOf(cbMarca.getSelectedItem()));
-            Color color = Color.valueOf(String.valueOf(cbColor.getSelectedItem()));
-
-            int anio = ((Long) txtAnio.getValue()).intValue();
-
-            auto = new Auto(txtModelo.getText(), marca, anio, color);
-        }
-
-        return auto;
-    }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,107 +61,17 @@ public class DgShowRoom extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtModelo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        cbMarca = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        txtAnio = new javax.swing.JFormattedTextField(formatoAnio);
-        jLabel5 = new javax.swing.JLabel();
-        cbColor = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Pedro Show Room");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Información General"));
-
-        jLabel2.setText("Modelo :");
-
-        jLabel3.setText("Marca :");
-
-        jLabel4.setText("Año :");
-
-        txtAnio.setValue(valorAnio);
-        txtAnio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtAnioFocusGained(evt);
-            }
-        });
-
-        jLabel5.setText("Color :");
-
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtModelo)
-                    .addComponent(cbMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtAnio)
-                    .addComponent(cbColor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(60, 60, 60))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cbColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -231,20 +86,48 @@ public class DgShowRoom extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Editar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -254,40 +137,19 @@ public class DgShowRoom extends javax.swing.JDialog {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-        limpiarComponentes();
+        DgAddCar add = new DgAddCar(new JFrame(), true);
+        add.addObserver(this);
+        add.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-
-        Auto a = getAutoDesdeComponente();
-
-        if (a == null) {
-            JOptionPane.showMessageDialog(this,
-                    "Mensaje", "Revise su codigo", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            TableModelAuto tmAuto = (TableModelAuto) jTable1.getModel();
-
-            tmAuto.setValueAt(a, jTable1.getRowCount(), jTable1.getRowCount());
-
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtAnioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioFocusGained
-        // TODO add your handling code here:
-        txtAnio.setValue(null);
-    }//GEN-LAST:event_txtAnioFocusGained
 
     /**
      * J
@@ -335,19 +197,22 @@ public class DgShowRoom extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cbColor;
-    private javax.swing.JComboBox cbMarca;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JFormattedTextField txtAnio;
-    private javax.swing.JTextField txtModelo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Class clase, Object argumento, String mensaje) {
+      
+        if("show_room".equals(mensaje)){
+            TableModelAuto tmAuto = (TableModelAuto) jTable1.getModel();
+
+            tmAuto.setValueAt((Auto)argumento, jTable1.getRowCount(), jTable1.getRowCount());
+            JOptionPane.showMessageDialog(this,"Mensaje", "Registro Agregado", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 }
