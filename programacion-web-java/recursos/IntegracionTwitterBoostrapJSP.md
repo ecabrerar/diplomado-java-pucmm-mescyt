@@ -85,7 +85,7 @@ Luego de eso se debe cambiar la ruta de los archivos **css** y **javascript**.
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 ```
 
-Ahora vamos a personalizar la plantilla usando etiquetas **[JSTL**](JSTL.md) agregando las siguientes expresiones:
+Ahora vamos a personalizar la plantilla usando etiquetas [JSTL](JSTL.md) agregando las siguientes expresiones:
 ```html
 <%@attribute name="title" required="false" %>
 <%@ attribute name="mainBody"  required="true" fragment="true" %>
