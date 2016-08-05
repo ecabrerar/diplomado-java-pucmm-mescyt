@@ -11,6 +11,7 @@
 * [Desarrollo Web Java (Taller UASD)] (https://github.com/ecabrerar/taller-desarrollo-web-java)
 * [Desarrollo Web Java (Diplomado Java - Curso Final UAPA)](https://github.com/uniabierta-cursofinal/programacion-web-java)
 * [JSTL (JavaServer pages Standard Tag Library)](recursos/JSTL.md)
+* [Integración de Twitter Boostrap (HTML5 y CSS3) con JSP](recursos/IntegracionTwitterBoostrapJSP.md)
 
 
 ### Libros
