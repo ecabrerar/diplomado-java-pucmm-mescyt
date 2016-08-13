@@ -85,7 +85,9 @@
             <li><a href="">Another nav item</a></li>
           </ul>
         </div>
-        <jsp:invoke fragment="mainBody"/>
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <jsp:invoke fragment="mainBody"/>
+          </div>
       </div>
     </div>
 

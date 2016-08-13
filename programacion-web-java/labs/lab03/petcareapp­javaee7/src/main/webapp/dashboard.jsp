@@ -9,10 +9,10 @@
 
 <!DOCTYPE html>
 
-<secured:dashboard title="Dashboard" >
+<secured:dashboard­layout title="Dashboard" >
 
     <jsp:attribute name="mainBody">
          <h2 class="sub-header">Section title</h2>
         
     </jsp:attribute>
-</secured:dashboard>
+</secured:dashboard­layout>

@@ -6,7 +6,6 @@
 package org.diplomado.pucmm.mescyt.java.petcareapp.javaee.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
