@@ -40,4 +40,10 @@ public class ServicioPais {
     public Pais consultarPorId(@NotNull int idPais){
        return entityManager.find(Pais.class, idPais);
     }
+    
+    public void borrarPorId(@NotNull int idPais){
+        
+      Pais p =  entityManager.find(Pais.class, idPais);
+      entityManager.remove(p);
+    }
 }

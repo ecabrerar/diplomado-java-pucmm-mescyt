@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="pantilla" tagdir="/WEB-INF/tags" %>
 
-<pantilla:dashboard title="Consulta Pais">
+<pantilla:dashboard­layout title="Consulta Pais">
     <jsp:attribute name="mainBody">
         
           <h2 class="sub-header">Pais</h2>
@@ -43,4 +43,4 @@
     </jsp:attribute>
     
     
-</pantilla:dashboard>
+</pantilla:dashboard­layout>
