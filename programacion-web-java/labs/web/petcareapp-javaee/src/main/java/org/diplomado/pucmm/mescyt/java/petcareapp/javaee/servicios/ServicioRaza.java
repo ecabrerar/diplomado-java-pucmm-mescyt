@@ -17,7 +17,8 @@ import org.diplomado.pucmm.mescyt.java.petcareapp.javaee.entidades.Raza;
  */
 @Stateless
 public class ServicioRaza {
-     @PersistenceContext private EntityManager entityManager;
+     @PersistenceContext 
+     private EntityManager entityManager;
      
      public List<Raza> consultarTodas(){
          return entityManager.createNamedQuery("Raza.findAll").getResultList();
