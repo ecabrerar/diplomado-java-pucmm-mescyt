@@ -13,7 +13,9 @@
 * [JSTL (JavaServer pages Standard Tag Library)](recursos/JSTL.md)
 * [Integración de Twitter Boostrap (HTML5 y CSS3) con JSP](recursos/IntegracionTwitterBoostrapJSP.md)
 * [Introducción a los Servicios Web](recursos/IntroduccionServiciosWeb.md)
-	* [Servicios REST en Java](recursos/ServiciosRESTenJava.md)
+	* [Servicios REST en Java (Básico)](recursos/ServiciosRESTenJava.md)
+	* [Servicios REST en Java Integración con Base de Datos](recursos/ServiciosRESTenJavaII.md)
+
 
 ### Libros
 * [Maven: The Complete Reference](http://books.sonatype.com/mvnref-book/reference/)
