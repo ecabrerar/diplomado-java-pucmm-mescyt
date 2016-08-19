@@ -12,7 +12,8 @@
 * [Desarrollo Web Java (Diplomado Java - Curso Final UAPA)](https://github.com/uniabierta-cursofinal/programacion-web-java)
 * [JSTL (JavaServer pages Standard Tag Library)](recursos/JSTL.md)
 * [Integración de Twitter Boostrap (HTML5 y CSS3) con JSP](recursos/IntegracionTwitterBoostrapJSP.md)
-
+* [Introducción a los Servicios Web](recursos/IntroduccionServiciosWeb.md)
+	* [Servicios REST en Java](recursos/ServiciosRESTenJava.md)
 
 ### Libros
 * [Maven: The Complete Reference](http://books.sonatype.com/mvnref-book/reference/)
