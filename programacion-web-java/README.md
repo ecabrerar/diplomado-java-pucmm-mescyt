@@ -15,6 +15,7 @@
 * [Introducción a los Servicios Web](recursos/IntroduccionServiciosWeb.md)
 	* [Servicios REST en Java (Básico)](recursos/ServiciosRESTenJava.md)
 	* [Servicios REST en Java Integración con Base de Datos](recursos/ServiciosRESTenJavaII.md)
+        * [Consumiendo Servicios REST en Java](recursos/ConsumiendoServiciosRESTenJava.md)
 
 
 ### Libros
