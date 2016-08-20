@@ -17,6 +17,10 @@
 	* [Servicios REST en Java Integración con Base de Datos](recursos/ServiciosRESTenJavaII.md)
         * [Consumiendo Servicios REST en Java](recursos/ConsumiendoServiciosRESTenJava.md)
 
+* [Java EE 7 Hands-on Lab](https://glassfish.java.net/hol/)
+	* [Español](https://glassfish.java.net/hol/javaee7-hol_es.pdf)
+	* [Inglés](https://glassfish.java.net/hol/javaee7-hol.pdf)
+* [My MiniLibrary Application](https://github.com/ecabrerar/javaee7-firstcup/tree/master/jaxrs/booklibrary)
 
 ### Libros
 * [Maven: The Complete Reference](http://books.sonatype.com/mvnref-book/reference/)
