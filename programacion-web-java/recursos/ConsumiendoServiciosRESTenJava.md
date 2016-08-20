@@ -12,7 +12,7 @@ Especificar la URL destino del servicio REST utilizando el método **_target(): 
 
 Manejar los parámetros de URL dinámica utilizando **path()** y **resolveTemplate()**: **_client.target(..).path("{id}").resolveTemplate(“id”, someId);_**
 
-Utilice el método **request()  **para iniciar la construcción de la solicitud seguido por uno de los métodos, por ejemplo, **post(), get(): client.target(..).request().get();**
+Utilice el método **request()** para iniciar la construcción de la solicitud seguido por uno de los métodos, por ejemplo, **post(), get(): client.target(..).request().get();**
 
 Cada pasos ofrece una variedad de posibles parámetros y opciones de configuración, voy a estar cubriendo algunos de ellos como las peticiones asíncronas, manejador de devolución de llamada y los filtros y clases de entidad posteriores.
 
