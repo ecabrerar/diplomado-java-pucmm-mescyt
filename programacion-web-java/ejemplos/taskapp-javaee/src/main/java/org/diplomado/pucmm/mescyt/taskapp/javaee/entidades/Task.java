@@ -133,7 +133,7 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "org.diplomado.pucmm.mescyt.taskapp.javaee.entidades.Task[ id=" + id + " ]";
+        return descripcion;
     }
 
 }
