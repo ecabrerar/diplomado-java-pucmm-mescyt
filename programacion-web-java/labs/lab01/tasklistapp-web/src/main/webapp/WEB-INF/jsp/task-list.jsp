@@ -5,7 +5,7 @@
                    pageScript="${pageContext.request.contextPath}/static/js/task-list.js">
  
     <jsp:attribute  name="navigationBarActions">
-        <a title="crear nueva tarea" class="element" href="/tasks/create"> 
+        <a title="crear nueva tarea" class="element" href="${pageContext.request.contextPath}/tasks/registrar"> 
             <span class="icon-plus-2 on-left"></span><span>nueva tarea</span>
         </a>
     </jsp:attribute>
@@ -18,12 +18,12 @@
 
          <div class="button-set place-bottom-right" data-role="button-group" id="filterButtons">
             <span class="place-left on-left-more icon-arrow-right-3" style="margin-top: 5px"></span>
-             <button id="all"  ${filter == 'all' ?  'class="active"' : ''} 
-                title="view all todos"> all </button>
-            <button id="open" ${filter == 'open' ? 'class="active"' : ''} 
-                title="view only open todos"> open </button>
-            <button id="done" ${filter == 'done' ? 'class="active"' : ''}
-                title="view only done todos" > done </button>           
+             <button id="todas"  ${filter == 'todas' ?  'class="active"' : ''} 
+                title="ver todas"> todas </button>
+            <button id="abierta" ${filter == 'abierta' ? 'class="active"' : ''} 
+                title="ver solamente tasks abiertas"> abierta </button>
+            <button id="finalizada" ${filter == 'finalizada' ? 'class="active"' : ''}
+                title="ver solamente tasks finalizadas" > finalizada </button>           
          </div>
        </div>
        <table class="table hovered">
@@ -35,13 +35,13 @@
              </tr>
           </thead>
           <tbody>
-             <c:forEach items="${todos}" var="item">  
+             <c:forEach items="${tasks}" var="item">  
                 <tr>
                      <td>
                          <i class="icon-checkbox${item.finalizado ? ' ' : '-unchecked'} fg-grayLight"></i>
                       </td>
                      <td>
-                         <a href="/tasks/${item.id}"> <c:out value="${item.nombre}"/> </a>
+                         <a href="${pageContext.request.contextPath}/tasks/${item.id}"> <c:out value="${item.nombre}"/> </a>
                      </td>
                      <td>${item.prioridad}</td>
                 </tr>

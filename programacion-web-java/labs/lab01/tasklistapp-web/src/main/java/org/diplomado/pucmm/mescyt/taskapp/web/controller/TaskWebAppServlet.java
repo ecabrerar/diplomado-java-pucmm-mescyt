@@ -1,7 +1,7 @@
 package org.diplomado.pucmm.mescyt.taskapp.web.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.UncheckedIOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +21,7 @@ import org.diplomado.pucmm.mescyt.tasklist.web.servicios.ServicioTask;
  *
  * @author ecabrerar
  */
-@WebServlet(urlPatterns = {"/tasks/*"}, asyncSupported = true)
+@WebServlet(urlPatterns = {"/tasks/*"})
 public class TaskWebAppServlet extends HttpServlet {
 
     private ServicioTask servicioTask;
@@ -46,19 +46,14 @@ public class TaskWebAppServlet extends HttpServlet {
             throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
         switch (pathInfo != null ? pathInfo : "") {
-            case "": {
-                try {
-                    getTaskList(request, response);
-                } catch (TaskAppException ex) {
-                    Logger.getLogger(TaskWebAppServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            break;
-            case "/create":
-                getCreateTodoForm(request, response);
+            case "":
+                getTaskList(request, response);
+                break;
+            case "/registrar":
+                getRegistrarTaskForm(request, response);
                 break;
             default:
-            // getEditTodoForm(request, response);
+                getFormTaskEdicion(request, response);
         }
     }
 
@@ -76,21 +71,21 @@ public class TaskWebAppServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         switch (action != null ? action : "") {
-            case "delete":
-                //deleteTodo(request, response);
+            case "borrar":
+                borrarTask(request, response);
                 break;
-            case "save":
-                // saveTodo(request, response);
+            case "salvar":
+                guardarTask(request, response);
                 break;
             default:
-                throw new ServletException("Unknown action");
+                throw new ServletException("Peticion desconocida");
         }
     }
 
     /**
      * Renders the creation form.
      */
-    private void getCreateTodoForm(HttpServletRequest request, HttpServletResponse response)
+    private void getRegistrarTaskForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/jsp/task-form.jsp");
@@ -98,25 +93,28 @@ public class TaskWebAppServlet extends HttpServlet {
     }
 
     /**
-     * Get the task list, filtered by the completion status (all, open and
-     * done).
+     * Obtener task list, filtrada por estado (todas, abierta y finalizada
+     *
      */
-    private void getTaskList(HttpServletRequest request, HttpServletResponse response) throws TaskAppException, ServletException, IOException {
+    private void getTaskList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Task> taskList = new ArrayList<>();
+        List<Task> taskList;
         String filter = request.getParameter("filter");
+        
         switch (filter != null ? filter : "") {
-            case "open":
-            case "done":
-                // taskList = todoService.findByCompleted("done".equals(filter));
+            case "abierta":
+                   taskList = servicioTask.consultarTaskAbierta();
                 break;
-            case "all":
+            case "finalizada":
+                taskList = servicioTask.consultarPorFinalizado("finalizada".equals(filter));
+                break;
+            case "todas":
             default:
                 taskList = servicioTask.consultarTaskTodas();
-                filter = "all";
+                filter = "todas";
         }
 
-        request.setAttribute("todos", taskList);
+        request.setAttribute("tasks", taskList);
         request.setAttribute("filter", filter);
 
         getServletContext()
@@ -124,4 +122,89 @@ public class TaskWebAppServlet extends HttpServlet {
                 .forward(request, response);
     }
 
+    /**
+     * Obtener el registro a modificar y enviar al formulario de edicion
+     */
+    private void getFormTaskEdicion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        int id = id(request);
+
+        try {
+
+            Task item = servicioTask.consultarTaskPorId(id).get();
+            request.setAttribute("task", item);
+
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher("/WEB-INF/jsp/task-form.jsp");
+
+            dispatcher.forward(request, response);
+
+        } catch (TaskAppException ex) {
+            Logger.getLogger(TaskWebAppServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    /**
+     * Registrar o modificar una tarea.
+     */
+    private void guardarTask(HttpServletRequest request, HttpServletResponse response) {
+
+        Task item = new Task();
+        item.setDescripcion(request.getParameter("descripcion"));
+        item.setNombre(request.getParameter("nombre"));
+        item.setPrioridad(request.getParameter("prioridad"));
+        item.setFinalizado("on".equals(request.getParameter("finalizado")));
+
+        if ("/registrar".equals(request.getPathInfo())) {
+            servicioTask.guardarTask(item);
+        } else {
+            item.setId(id(request));
+
+            servicioTask.modificarTask(item);
+        }
+
+        redirect(response, request.getContextPath()+"/tasks");
+
+    }
+
+    /**
+     * Borrar una tarea
+     */
+    private void borrarTask(HttpServletRequest request, HttpServletResponse response) {
+        int id = id(request);
+
+        servicioTask.borrarTask(id);
+
+        redirect(response, request.getContextPath()+"/tasks");
+
+    }
+
+    /**
+     * Extraer id desde the Http request.
+     */
+    private int id(HttpServletRequest request) {
+        int id = 0;
+        String pathInfo = request.getPathInfo();
+        if (pathInfo != null && pathInfo.length() > 1) {
+            String idString = pathInfo.substring(1);
+            // This can throw NumberFormatException
+            id = Integer.valueOf(idString);
+        }
+        return id;
+    }
+
+    /**
+     * Metodo para redireccionar
+     *
+     * @param response
+     * @param redirectLocation
+     */
+    private void redirect(HttpServletResponse response, String redirectLocation) {
+        try {
+            response.sendRedirect(redirectLocation);
+        } catch (IOException ex) {
+            throw new UncheckedIOException(ex);
+        }
+    }
 }

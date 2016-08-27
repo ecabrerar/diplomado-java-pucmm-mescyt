@@ -1,22 +1,22 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<t:taskapp-layout title="to-do item"
-                   pageScript="${pageContext.request.contextPath}/static/js/todo-form.js">
+<t:taskapp-layout title="task item"
+                   pageScript="${pageContext.request.contextPath}/static/js/task-form.js">
  
     <jsp:attribute  name="navigationBarActions">           
-		<a title="Save" class="element" href="#" id="save"> <span
+		<a title="Salvar" class="element" href="#" id="salvar"> <span
 			class="icon-checkmark on-left"></span><span>aceptar</span>
 		</a> 			
-		<a title="Cancel" class="element" href="/todos"> <span
+		<a title="Cancelar" class="element" href="${pageContext.request.contextPath}/tasks"> <span
 			class="icon-undo on-left"></span><span>cancelar</span>
 		</a>
 		
-		<c:if test="${!empty todo}">
-			<form id="deleteForm" method="POST">
-			    <input type="hidden" name="action" value="delete" />
+		<c:if test="${!empty task}">
+			<form id="borrarForm" method="POST">
+			    <input type="hidden" name="action" value="borrar" />
 			</form>    
-			<a title="Delete" class="element" href="#" id="delete"> <span
+			<a title="Borrar" class="element" href="#" id="borrar"> <span
 				class="icon-cancel-2 on-left"></span><span>borrar</span>
 			</a> 
 		</c:if>
@@ -24,38 +24,37 @@
 
     <jsp:attribute  name="mainBody"> 
       	<h1>
-			<a href="list.html"><i class="icon-clipboard fg-darker smaller"></i>
-			</a>task-list<small class="on-right">item</small>
+			<i class="icon-clipboard fg-darker smaller"></i>
+			task-list<small class="on-right">item</small>
 		</h1>
 
-		<form class="span10" id="todoForm" method="POST">
-		    <input type="hidden" name="action"  value="save" />
-            <input type="hidden" name="version" value="${todo.version}"/>
+		<form class="span10" id="taskForm" method="POST">
+		    <input type="hidden" name="action"  value="salvar" />
                        
 			<label>Nombre <span class="fg-red" id="nameMessage"></span></label>
 			<div class="input-control text" data-role="input-control" id="nameControl">
-				<input type="text" placeholder="todo name" id="name" name="name" value="${todo.name}"></input>
+				<input type="text" placeholder="nombre" id="name" name="nombre" value="${task.nombre}"></input>
 				<button class="btn-clear" tabindex="-1" type="button"></button>			
 			</div>
 
 			<label>Descripcion</label>
 			<div class="input-control textarea" data-role="input-control">
-				<textarea name="description">${todo.description}</textarea>
+				<textarea name="descripcion">${task.descripcion}</textarea>
 			</div>
 
 			<label>Prioridad</label>
 			<div class="input-control select">
-				<select name="priority">
+				<select name="prioridad">
 				    <option value="">  </option>
-					<option value="High"   ${todo.priority == 'High' ? 'selected':''}>Alta</option>
-					<option value="Normal" ${todo.priority == 'Normal' ? 'selected':''}>Normal</option>
-					<option value="Low"    ${todo.priority == 'Low' ? 'selected':''}>Baja</option>
+					<option value="Alta"   ${task.prioridad == 'Alta' ? 'selected':''}>Alta</option>
+					<option value="Normal" ${task.prioridad == 'Normal' ? 'selected':''}>Normal</option>
+					<option value="Baja"    ${task.prioridad == 'Baja' ? 'selected':''}>Baja</option>
 				</select>
 			</div>
 
 			<label class="nbm">Terminada</label>
 			<div class="input-control checkbox" data-role="input-control">
-				<label> <input type="checkbox" name="completed" ${todo.completed? 'checked' : ''}/> <span class="check"></span>
+				<label> <input type="checkbox" name="finalizado" ${task.finalizado? 'checked' : ''}/> <span class="check"></span>
 				</label>
 			</div>
 

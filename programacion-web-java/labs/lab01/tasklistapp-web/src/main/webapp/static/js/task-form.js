@@ -1,21 +1,21 @@
 $(function(){
 
-	$("#save").click(function(event){
-		$("#todoForm").submit();
+	$("#salvar").click(function(event){
+		$("#taskForm").submit();
 		 event.preventDefault();
 	});
 	
-	$("#delete").click(function(event){
-		$("#deleteForm").submit();
+	$("#borrar").click(function(event){
+		$("#borrarForm").submit();
 		 event.preventDefault();
 	});
 
-	$("#name").blur(validateName)
+	$("#nombre").blur(validateName)
 	          .keyup(validateName);
 	
 	$("#nameControl button").click(validateName);
 	
-    $("#todoForm").submit(validateName);
+    $("#taskForm").submit(validateName);
     
     // Errror popup
     var errorContent = $('#errorContent').html();
@@ -34,7 +34,7 @@ $(function(){
     
     function validateName() {
     	var result;
-    	if ($("#name").val() < 1) {
+    	if ($("#nombre").val() < 1) {
     		$("#nameControl").addClass("error-state");
     		$("#nameMessage").text("(Required)");
     		result = false;

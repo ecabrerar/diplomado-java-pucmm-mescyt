@@ -26,16 +26,16 @@
    <header>
       <nav class="navigation-bar">
          <nav class="navigation-bar-content container">        
-            <a class="element" href="/">
+            <a class="element" href="${pageContext.request.contextPath}/tasks">
                <span class="icon-list"></span> <span> taskapp </span>
             </a> 
             
             <jsp:invoke fragment="navigationBarActions" />
             
-            <a title="more info" class="element place-right" href="https://github.com/relai/todosapp"> 
+            <a title="info" class="element place-right" href="#"> 
                   <span class="icon-info-2"></span>
             </a> 
-            <a title="author" class="element place-right" href="http://relai.blogspot.com/"> 
+            <a title="author" class="element place-right" href="#"> 
                  <span	class="icon-at"></span>
             </a>                  
          </nav>

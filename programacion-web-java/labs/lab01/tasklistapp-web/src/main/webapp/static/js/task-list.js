@@ -1,6 +1,6 @@
 $(function(){
 	// Filter
 	$("#filterButtons button").click(function(event){
-        window.location.replace("todos?filter=" + event.target.id);
+        window.location.replace("/taskapp/tasks?filter=" + event.target.id);
 	});
 });

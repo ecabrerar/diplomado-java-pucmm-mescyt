@@ -8,21 +8,21 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<t:todosapp-layout title="to-do error" >
+<t:todosapp-layout title="taskapp error" >
  
     <jsp:attribute  name="navigationBarActions">		
-		<a title="Back" class="element" href="/todos"> <span
-			class="icon-arrow-left on-left"></span><span>back</span>
+		<a title="Back" class="element" href="/tasks"> <span
+			class="icon-arrow-left on-left"></span><span>retornar</span>
 		</a>	
     </jsp:attribute>
 
     <jsp:attribute  name="mainBody"> 
       	<h1>
 			<i class="icon-bug fg-darker smaller"></i>
-			Oops
+			Ha ocurrido un error
 		</h1>
 
-        <p class="padding20 margin20"> ${message} Click back button to reload.
+        <p class="padding20 margin20"> ${message} Pulsar el boton de retornar para recargar.
 
        <!--
             This is for DEV sample only. DO NOT USE FOR PRODUCTION!
