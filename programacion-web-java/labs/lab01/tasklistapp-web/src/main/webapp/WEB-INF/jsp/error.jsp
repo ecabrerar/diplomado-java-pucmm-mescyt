@@ -8,10 +8,10 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<t:todosapp-layout title="taskapp error" >
+<t:taskapp-layout title="taskapp error" >
  
     <jsp:attribute  name="navigationBarActions">		
-		<a title="Back" class="element" href="/tasks"> <span
+		<a title="Back" class="element" href="${pageContext.request.contextPath}/tasks"> <span
 			class="icon-arrow-left on-left"></span><span>retornar</span>
 		</a>	
     </jsp:attribute>
@@ -37,4 +37,4 @@
         -->
     </jsp:attribute>
     
-</t:todosapp-layout>
+</t:taskapp-layout>
