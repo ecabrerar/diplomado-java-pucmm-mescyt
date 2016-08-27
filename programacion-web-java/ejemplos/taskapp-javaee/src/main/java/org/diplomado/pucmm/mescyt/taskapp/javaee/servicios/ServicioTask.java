@@ -38,6 +38,14 @@ public class ServicioTask {
 
         return query.getResultList();
     }
+    
+    public List<Task> consultarTaskAbierta() {
+
+        TypedQuery<Task> query = em.createNamedQuery("Task.findByFinalizado", Task.class)
+                .setParameter("finalizado", false);
+
+        return query.getResultList();
+    }
 
     public Task consultarTaskPorId(int id) {
         Task task = em.find(Task.class, id);
