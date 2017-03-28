@@ -38,7 +38,7 @@
              <c:forEach items="${tasks}" var="item">  
                 <tr>
                      <td>
-                         <i class="icon-checkbox${item.finalizado ? ' ' : '-unchecked'} fg-grayLight"></i>
+                         <i class="icon-checkbox${item.finalizado > 0 ? ' ' : '-unchecked'} fg-grayLight"></i>
                       </td>
                      <td>
                          <a href="${pageContext.request.contextPath}/tasks/${item.id}"> <c:out value="${item.nombre}"/> </a>

@@ -1,4 +1,4 @@
-##Aprendiendo a diseñar las clases de un programa a partir de un escenario dado. 
+## Aprendiendo a diseñar las clases de un programa a partir de un escenario dado. 
 
 Supongamos que tenemos que desarrollar una aplicación   que gestione los alquileres de 
 DVDs en un vídeo­club. 
@@ -185,7 +185,7 @@ public class Cliente {
 Hasta aquí nuestro diseño inicial ha concluido, pero tiene un error de diseño y a continuación 
 vamos corregir este error. 
 
-###Paso 1­:
+### Paso 1­:
 
 a)El tipo de pelicula puede ser representado por un enum para hacer nuestro diseño de clase más flexible.
 
@@ -323,7 +323,7 @@ public class Cliente {
 
 ```
 
-###Paso 2­:
+### Paso 2­:
 En realidad, precio no usa datos de Cliente, por lo que resulta más que razonable convertirlo en un método de la clase Alquiler 
 
 ```java
@@ -413,7 +413,7 @@ public class Cliente {
 
 ```
 
-###Paso 3: 
+### Paso 3: 
 Extraer el cálculo correspondiente al programa de puntos.
 ```java
 
@@ -468,7 +468,7 @@ public class Cliente {
 
 ```
 
-###Paso 4: 
+### Paso 4: 
 Separar los cálculos de las operaciones de E/S En el método  getFactura(), estamos mezclando cálculos útiles con las  llamadas a  System.out.println() que generar el informe: 
 a)Creamos un método independiente para calcular el gasto total realizado por un cliente. 
 
@@ -596,7 +596,7 @@ public class Cliente {
 
 ```
 
-###Paso 5:
+### Paso 5:
 Movemos la implementación del método getImporte() de la clase  Alquiler al lugar que parece más natural si los precios van ligados  a la película que se alquila: 
 
 ```java
@@ -672,7 +672,7 @@ public class Alquiler {
 
 ```
 
-###Paso 6:
+### Paso 6:
 Hacemos lo mismo con el método getPuntos():
 
 ```java
@@ -701,7 +701,7 @@ public class Alquiler {
 }
 
 ```
-###Paso 7:
+### Paso 7:
 Reemplazar lógica condicional con polimorfismo.
 Queremos darle más flexibilidad a la forma en la que se fijan los  precios de los alquileres de películas, para que se puedan añadir nuevas categorías (por ejemplo, en la creación de promociones) o  para que se puedan ajustar las tarifas.
 
@@ -879,7 +879,7 @@ public class DVD {
 
 ```
 
-###Paso 8: 
+### Paso 8: 
 Reemplazar lógica condicional con polimorfismo II. 
 Repetimos el mismo proceso de antes para el método getPuntos()
 ```java

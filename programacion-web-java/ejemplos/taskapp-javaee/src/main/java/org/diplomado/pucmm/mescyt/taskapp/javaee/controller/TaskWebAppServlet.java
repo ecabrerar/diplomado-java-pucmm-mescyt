@@ -1,20 +1,18 @@
-package org.diplomado.pucmm.mescyt.taskapp.web.controller;
+package org.diplomado.pucmm.mescyt.taskapp.javaee.controller;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.diplomado.pucmm.mescyt.taskapp.web.entidades.Task;
-import org.diplomado.pucmm.mescyt.taskapp.web.utilidades.TaskAppException;
-import org.diplomado.pucmm.mescyt.tasklist.web.servicios.ServicioTask;
+import org.diplomado.pucmm.mescyt.taskapp.javaee.entidades.Task;
+import org.diplomado.pucmm.mescyt.taskapp.javaee.servicios.ServicioTask;
+
 
 /**
  *
@@ -24,14 +22,8 @@ import org.diplomado.pucmm.mescyt.tasklist.web.servicios.ServicioTask;
 @WebServlet(urlPatterns = {"/tasks/*"})
 public class TaskWebAppServlet extends HttpServlet {
 
-    private ServicioTask servicioTask;
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-
-        servicioTask = new ServicioTask();
-    }
+   @Inject
+   private ServicioTask servicioTask;    
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -110,7 +102,7 @@ public class TaskWebAppServlet extends HttpServlet {
                 break;
             case "todas":
             default:
-                taskList = servicioTask.consultarTaskTodas();
+                taskList = servicioTask.consultarTodas();
                 filter = "todas";
         }
 
@@ -129,19 +121,11 @@ public class TaskWebAppServlet extends HttpServlet {
 
         int id = id(request);
 
-        try {
-
-            Task item = servicioTask.consultarTaskPorId(id).get();
-            request.setAttribute("task", item);
-
-            RequestDispatcher dispatcher = getServletContext()
-                    .getRequestDispatcher("/WEB-INF/jsp/task-form.jsp");
-
-            dispatcher.forward(request, response);
-
-        } catch (TaskAppException ex) {
-            Logger.getLogger(TaskWebAppServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Task item = servicioTask.consultarTaskPorId(id);
+        request.setAttribute("task", item);
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/jsp/task-form.jsp");
+        dispatcher.forward(request, response);
 
     }
 
@@ -154,7 +138,7 @@ public class TaskWebAppServlet extends HttpServlet {
         item.setDescripcion(request.getParameter("descripcion"));
         item.setNombre(request.getParameter("nombre"));
         item.setPrioridad(request.getParameter("prioridad"));
-        item.setFinalizado("on".equals(request.getParameter("finalizado")));
+        item.setFinalizado(Short.parseShort("on".equals(request.getParameter("finalizado"))? "1" : "0"));
 
         if ("/registrar".equals(request.getPathInfo())) {
             servicioTask.guardarTask(item);

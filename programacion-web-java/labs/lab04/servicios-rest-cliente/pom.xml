@@ -27,4 +27,21 @@
             <version>1.0.4</version>
         </dependency>
     </dependencies>
+    
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+                                <version>2.6</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.diplomado.pucmm.mescyt.servicios.rest.cliente.PaisClienteRestOpBasicas</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

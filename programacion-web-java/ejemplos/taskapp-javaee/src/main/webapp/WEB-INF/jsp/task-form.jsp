@@ -54,7 +54,7 @@
 
 			<label class="nbm">Terminada</label>
 			<div class="input-control checkbox" data-role="input-control">
-				<label> <input type="checkbox" name="finalizado" ${task.finalizado? 'checked' : ''}/> <span class="check"></span>
+				<label> <input type="checkbox" name="finalizado" ${task.finalizado==1? 'checked' : ''}/> <span class="check"></span>
 				</label>
 			</div>
 

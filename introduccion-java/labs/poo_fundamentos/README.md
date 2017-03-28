@@ -1,4 +1,4 @@
-##Escenario
+## Escenario
 En una tienda de equipo digitales los dispositivos móviles son clasificados de la siguiente forma:
 
 * Celular : Si es un dispotivio con las funciones básicas para realizar llamadas, agenda de contacto, etc.

@@ -11,7 +11,7 @@
 <t:taskapp-layout title="taskapp error" >
  
     <jsp:attribute  name="navigationBarActions">		
-		<a title="Back" class="element" href="${pageContext.request.contextPath}/tasks"> <span
+		<a title="Back" class="element" href="/tasks"> <span
 			class="icon-arrow-left on-left"></span><span>retornar</span>
 		</a>	
     </jsp:attribute>

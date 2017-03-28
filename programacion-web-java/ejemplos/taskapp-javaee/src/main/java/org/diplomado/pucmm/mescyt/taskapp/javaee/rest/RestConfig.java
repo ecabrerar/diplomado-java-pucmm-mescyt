@@ -14,17 +14,7 @@ import javax.ws.rs.core.Application;
  * @author ecabrerar
  * @date Aug 26, 2016  
  */
-@ApplicationPath("rest")
+@ApplicationPath("api")
 public class RestConfig extends Application{
-
-//    @Override
-//    public Set<Class<?>> getClasses() {
-//        
-//        Set<Class<?>> classes = new HashSet<>();
-//        classes.add(ServicioRestTask.class);       
-//        
-//        return classes; 
-//    }
-    
 
 }
