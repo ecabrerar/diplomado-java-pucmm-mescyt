@@ -1,9 +1,9 @@
-##taskapp-javaee 
+## taskapp-javaee 
 Es una aplicación demo con fines de demostrar los conceptos de JPA, CDI y Servicios REST en Java.
 
 El ejemplo cuenta con una aplicación web y un api REST.
 
-###Requerimientos
+### Requerimientos
 
 * Java 1.7+ (Recomendado Java 8)
 * Java EE 7

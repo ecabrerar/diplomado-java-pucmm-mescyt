@@ -1,4 +1,4 @@
-##Recomendaciones Generales
+## Recomendaciones Generales
 
 A continuación un listado de reglas básicas que debemos seguir cuando estamos desarrollando una aplicación cliente servidor en Java.
 
